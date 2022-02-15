@@ -1,2 +1,0 @@
-class Chapter < ApplicationRecord
-end
