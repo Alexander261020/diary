@@ -12,16 +12,7 @@ class ChaptersController < ApplicationController
 
   def create
     @chapter = Chapter.create(chapter_params)
-
-    # unless через || не отрабатывает, не знаю почему
-    if !params[:comment].blank? || !params[:content].blank? || !params[:lind].blank?
-      params_block = {
-        'content' => params[:content],
-        'comment' => params[:comment],
-        'link' => params[:link] }
-
-      @chapter.blocks.create(params_block)
-    end
+    BlockSave.(params, @chapter)
 
     redirect_to root_path
   end
@@ -35,15 +26,7 @@ class ChaptersController < ApplicationController
   def update
     @chapter = Chapter.find params[:id]
     @chapter.update(chapter_params)
-
-    if !params[:comment].blank? || !params[:content].blank? || !params[:lind].blank?
-      params_block = {
-        'content' => params[:content],
-        'comment' => params[:comment],
-        'link' => params[:link] }
-
-      @chapter.blocks.create(params_block)
-    end
+    BlockSave.(params, @chapter)
 
     redirect_to chapter_path(@chapter)
   end
