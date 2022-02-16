@@ -1,0 +1,12 @@
+<%= form_for @block do |f| %>
+  <!-- %= render partial: 'partials/form_errors', locals: {model: @user} %-->
+
+  <div class="form-group">
+    <%= f.label :content, class: "fw-bold" %>
+    <%= f.text_field :content, class: "col-12 mb-2 form-control p-1 pr-2" %>
+  </div>
+
+  <div class="actions">
+    <!-- %= f.submit t('message.save'), class: 'btn btn-primary' % -->
+    <%= f.submit 'save', class: 'btn btn-primary' %>
+<% end %>

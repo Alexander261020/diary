@@ -6,6 +6,13 @@
     <%= f.text_field :name, class: "col-12 mb-2 form-control p-1 pr-2" %>
   </div>
 
+  <!-- Форма для блока надо будет переделать -->
+  <div class="form-group">
+    <textarea rows="2" cols="100" name="comment" placeholder="block comment"></textarea>
+    <textarea rows="2" cols="100" name="content" placeholder="block content"></textarea>
+    <textarea rows="2" cols="100" name="link" placeholder="block link"></textarea>
+  </div>
+
   <div class="actions">
     <!-- %= f.submit t('message.save'), class: 'btn btn-primary' % -->
     <%= f.submit 'save', class: 'btn btn-primary' %>

@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_15_171142) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_15_185514) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blocks", force: :cascade do |t|
+    t.bigint "chapter_id"
+    t.string "content"
+    t.string "comment"
+    t.string "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chapter_id"], name: "index_blocks_on_chapter_id"
+  end
 
   create_table "chapters", force: :cascade do |t|
     t.string "name"
@@ -20,4 +30,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_171142) do
     t.datetime "updated_at", null: false
   end
 
+  # add_foreign_key "blocks", "chapters", on_delete: :cascade
 end

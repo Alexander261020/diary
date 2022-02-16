@@ -1,0 +1,19 @@
+<div class="border border-dark m-1 p-2">
+  <% unless block.comment.blank? %>
+    <div class="text-muted">
+      <%= block.comment %>
+    </div>
+  <% end %>
+
+  <% unless block.content.blank? %>
+    <div class="mt-1">
+      <%= block.content %>
+    </div>
+  <% end %>
+
+  <% unless block.link.blank? %>
+    <div class="mt-1">
+      <%= link_to block.link, block.link, target: '_blank' %>
+    </div>
+  <% end %>
+</div>
