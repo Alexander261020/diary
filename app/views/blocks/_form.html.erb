@@ -1,12 +1,8 @@
 <%= form_for @block do |f| %>
-  <!-- %= render partial: 'partials/form_errors', locals: {model: @user} %-->
-
-  <div class="form-group">
-    <%= f.label :content, class: "fw-bold" %>
-    <%= f.text_field :content, class: "col-12 mb-2 form-control p-1 pr-2" %>
-  </div>
+  <%= text_area_tag :comment, @block.comment, size: "100x2"%>
+  <%= text_area_tag :content, @block.content, size: "100x5"%>
+  <%= text_area_tag :link, @block.link, size: "100x1"%>
 
   <div class="actions">
-    <!-- %= f.submit t('message.save'), class: 'btn btn-primary' % -->
-    <%= f.submit 'save', class: 'btn btn-primary' %>
+    <%= f.submit 'save block', class: 'btn btn-primary' %>
 <% end %>

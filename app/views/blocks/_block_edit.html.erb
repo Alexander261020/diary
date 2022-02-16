@@ -1,0 +1,31 @@
+<div class="border border-dark m-1 p-2">
+  <div class="col-8 d-inline-block">
+    <% unless block_edit.comment.blank? %>
+      <div class="text-muted">
+        <%= block_edit.comment %>
+      </div>
+    <% end %>
+
+    <% unless block_edit.content.blank? %>
+      <div class="mt-1">
+        <%= block_edit.content %>
+      </div>
+    <% end %>
+
+    <% unless block_edit.link.blank? %>
+      <div class="mt-1">
+        <%= link_to block_edit.link, block_edit.link, target: '_blank' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-1 d-inline-block align-top">
+    <%= link_to 'edit', edit_block_path(block_edit.id), class: 'btn btn-dark w-100' %>
+  </div>
+
+  <div class="col-1 d-inline-block align-top">
+    <%= button_to 'destroy', block_path(block_edit.id), method: :delete,
+      class: 'btn btn-danger w-100',
+      data: {confirm: t('.destroy_confirm')} %>
+  </div>
+</div>
