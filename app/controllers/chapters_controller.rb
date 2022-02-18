@@ -3,7 +3,7 @@ class ChaptersController < ApplicationController
 
   def index
     @chapters = Chapter.all
-  end
+  end 
 
   def new
     @chapter = Chapter.new

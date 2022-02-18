@@ -15,7 +15,13 @@ class BlocksController < ApplicationController
   end
 
   def update
-    block = BlockUpdate.(params)
+    block = BlockUpdate.(block_params, params[:id])
     redirect_to chapter_path(block.chapter)
+  end
+
+  private
+
+  def block_params
+    params.require(:block).permit(:content, :comment, :link, :number_line)
   end
 end

@@ -9,5 +9,5 @@
   </div>
 </div>
 <div>
-  <%= render partial: 'blocks/block', collection: @chapter.blocks %>
+  <%= render partial: 'blocks/block', collection: @chapter.blocks.order(:number_line) %>
 </div>
