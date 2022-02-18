@@ -1,7 +1,7 @@
 class BlockSave
   def self.call(params, chapter)
     # unless через || не отрабатывает, не знаю почему
-    if !params[:comment].blank? || !params[:content].blank? || !params[:lind].blank?
+    if !params[:comment].blank? || !params[:content].blank? || !params[:link].blank?
       params_block = {
         'content' => params[:content],
         'comment' => params[:comment],

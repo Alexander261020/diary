@@ -1,7 +1,7 @@
 <%= form_for @block do |f| %>
-  <%= text_area_tag :comment, @block.comment, size: "100x2"%>
-  <%= text_area_tag :content, @block.content, size: "100x5"%>
-  <%= text_area_tag :link, @block.link, size: "100x1"%>
+  <%= text_area_tag :comment, @block.comment, size: "100x2" %>
+  <%= text_area_tag :content, @block.content, size: "100x5" %>
+  <%= text_area_tag :link, @block.link, size: "100x1" %>
 
   <div class="actions">
     <%= f.submit 'save block', class: 'btn btn-primary' %>

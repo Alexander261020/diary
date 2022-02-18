@@ -8,9 +8,9 @@
 
   <!-- Форма для блока надо будет переделать -->
   <div class="form-group">
-    <textarea rows="2" cols="100" name="comment" placeholder="block comment"></textarea>
-    <textarea rows="2" cols="100" name="content" placeholder="block content"></textarea>
-    <textarea rows="2" cols="100" name="link" placeholder="block link"></textarea>
+    <%= text_area_tag :comment, nil, size: "100x2", placeholder: "block comment" %>
+    <%= text_area_tag :content, nil, size: "100x7", placeholder: "block content" %>
+    <%= text_area_tag :link, nil, size: "100x1", placeholder: "block link" %>
   </div>
 
   <div class="actions">
