@@ -18,6 +18,9 @@ class ChaptersController < ApplicationController
   end
 
   def show
+    # фиксируем клик, нужно для активности
+    @chapter.count_clicks += 1
+    @chapter.save
   end
 
   def edit
@@ -38,7 +41,7 @@ class ChaptersController < ApplicationController
   private
 
   def chapter_params
-    params.require(:chapter).permit(:name)
+    params.require(:chapter).permit(:name, :count_clicks)
   end
 
   def find_chapter

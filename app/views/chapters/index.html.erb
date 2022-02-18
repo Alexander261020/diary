@@ -1,5 +1,5 @@
 <div class="text-center">
-  <%= render partial: 'chapter', collection: @chapters %>
+  <%= render partial: 'chapter', collection: @chapters.order(count_clicks: :DESC) %>
 </div>
 <!--div class="btn btn-primary">SOS</div>
 <div class="test">sdf</div-->

@@ -2,6 +2,8 @@
   <%= content_tag :div, (content_tag :h1, @chapter.name), class: 'col-6 text-center d-inline-block' %>
   <%= link_to t('message.edit'), edit_chapter_path(@chapter.id), class: 'btn btn-dark col-2' %>
   <div class="d-inline-block col-2">
+
+  <!-- link_to через метод delete так и не отрабатывает думаю проблемы со скриптом -->
     <%= button_to('destroy', chapter_path(@chapter.id), method: :delete,
       class: 'btn btn-dark col-12 d-inline-block',
       data: {confirm: t('.destroy_confirm')}
