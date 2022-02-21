@@ -82,6 +82,8 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.10.0)
+    esbuild-rails (0.1.4)
+      rails (>= 6.0.0)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
@@ -210,6 +212,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   dotenv-rails
+  esbuild-rails
   factory_bot_rails
   jquery-rails
   jsbundling-rails
@@ -222,7 +225,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.0.0p0
+   ruby 3.0.3p157
 
 BUNDLED WITH
-   2.2.30
+   2.3.7
