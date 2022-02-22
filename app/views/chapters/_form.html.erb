@@ -1,17 +1,10 @@
 <%= form_for @chapter do |f| %>
   <!-- %= render partial: 'partials/form_errors', locals: {model: @user} %-->
 
-  <div class="form-group">
+  <div class="form-group col-10 d-inline-block">
     <%= f.label :name, class: "fw-bold" %>
-    <%= f.text_field :name, class: "col-12 mb-2 form-control p-1 pr-2" %>
+    <%= f.text_field :name, class: "mb-2 form-control p-1 pr-2" %>
   </div>
 
-  <!-- Форма для блока надо будет переделать -->
-  <div class="form-group">
-    <%= text_area_tag :comment, nil, size: "100x2", placeholder: "block comment" %>
-    <%= text_area_tag :content, nil, size: "100x7", placeholder: "block content" %>
-    <%= text_area_tag :link, nil, size: "100x1", placeholder: "block link" %>
-  </div>
-
-  <%= f.submit 'save', class: 'btn btn-primary' %>
+  <%= f.submit 'save', class: 'btn btn-primary d-inline-block' %>
 <% end %>

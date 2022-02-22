@@ -1,7 +1,7 @@
 class BlockUpdate
-  def self.call(params, id)
-    block = Block.find id
-    block.update(params)
+  def self.call(params)
+    block = Block.find params[:id]
+    block.update(params[:block])
     block
   end
 end

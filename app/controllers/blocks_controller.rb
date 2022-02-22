@@ -1,5 +1,15 @@
 class BlocksController < ApplicationController
+  # вызывает ошибку несколько раз вызываю редирект
+  # after_action :redirect_block, only: [:create, :update]
+
   def create
+    @block = BlockSave.(params)
+    redirect_block
+  end
+
+  def update
+    @block = BlockUpdate.(params.permit!)
+    redirect_block
   end
 
   def edit
@@ -14,14 +24,13 @@ class BlocksController < ApplicationController
     redirect_to chapter_path(@chapter)
   end
 
-  def update
-    block = BlockUpdate.(block_params, params[:id])
-    redirect_to chapter_path(block.chapter)
-  end
-
   private
 
-  def block_params
-    params.require(:block).permit(:content, :comment, :link, :number_line)
+  def redirect_block
+    if @block.chapter.nil?
+      redirect_to subsection_path(@block.subsection)
+    else
+      redirect_to chapter_path(@block.chapter)
+    end
   end
 end

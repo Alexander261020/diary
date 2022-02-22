@@ -3,7 +3,7 @@ class ChaptersController < ApplicationController
 
   def index
     @chapters = Chapter.all
-  end 
+  end
 
   def new
     @chapter = Chapter.new
@@ -24,12 +24,13 @@ class ChaptersController < ApplicationController
   end
 
   def edit
+    @subsection = Subsection.new
+    @block = Block.new
   end
 
   def update
     @chapter = Chapter.find params[:id]
     @chapter.update(chapter_params)
-    BlockSave.(params, @chapter)
 
     redirect_to chapter_path(@chapter)
   end

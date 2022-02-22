@@ -1,0 +1,20 @@
+<div class="text-center">
+  <%= content_tag :div, (content_tag :h1, "#{@subsection.chapter.name}/#{@subsection.name}"), class: 'col-6 text-center d-inline-block' %>
+  <%= link_to t('message.edit'), edit_subsection_path(@subsection.id), class: 'btn btn-dark col-2' %>
+  <div class="d-inline-block col-2">
+
+  <!-- link_to через метод delete так и не отрабатывает думаю проблемы со скриптом -->
+    <!-- %= button_to('destroy', chapter_path(@chapter.id), method: :delete,
+      class: 'btn btn-dark col-12 d-inline-block',
+      data: {confirm: t('.destroy_confirm')}
+      ) %-->
+  </div>
+</div>
+<div class="text-center">
+  <!-- %= render partial: 'subsections/subsection', collection: @chapter.subsections % -->
+</div>
+<% unless @subsection.blocks.empty? %>
+  <div>
+    <%= render partial: 'blocks/block', collection: @subsection.blocks.order(:number_line) %>
+  </div>
+<% end %>

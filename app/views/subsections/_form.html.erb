@@ -1,0 +1,11 @@
+<%= form_for @subsection do |f| %>
+  <div class="form-group  d-inline-block">
+    <%= f.label :name, class: "fw-bold" %>
+    <%= f.text_field :name, class: "col-10 mb-2 form-control p-1 pr-2" %>
+
+    <% unless @chapter.nil? %>
+      <%= hidden_field_tag :chapter_id, @chapter.id %>
+    <% end %>
+  </div>
+  <%= f.submit "save Sub", class: "btn btn-primary d-inline-block" %>
+<% end %>

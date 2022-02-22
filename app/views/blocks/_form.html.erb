@@ -3,5 +3,9 @@
   <%= f.number_field :number_line, class: "col-1 mb-2 align-top float-right" %>
   <%= f.text_area :content, size: "100x5" %>
   <%= f.text_area :link, size: "100x1" %>
+
+  <%= hidden_field_tag :chapter_id, @chapter.id unless @chapter.nil? %>
+  <%= hidden_field_tag :subsection_id, @subsection.id unless @subsection.nil? %>
+
   <%= f.submit 'save block', class: 'btn btn-primary' %>
 <% end %>

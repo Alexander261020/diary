@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_18_091726) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_22_185231) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,7 +22,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_18_091726) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "number_line", default: 1
+    t.bigint "subsection_id"
     t.index ["chapter_id"], name: "index_blocks_on_chapter_id"
+    t.index ["subsection_id"], name: "index_blocks_on_subsection_id"
   end
 
   create_table "chapters", force: :cascade do |t|
@@ -32,5 +34,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_18_091726) do
     t.integer "count_clicks", default: 0
   end
 
+  create_table "subsections", force: :cascade do |t|
+    t.bigint "chapter_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chapter_id"], name: "index_subsections_on_chapter_id"
+  end
+
   add_foreign_key "blocks", "chapters"
+  add_foreign_key "blocks", "subsections"
+  add_foreign_key "subsections", "chapters"
 end
