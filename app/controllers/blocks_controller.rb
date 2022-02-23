@@ -1,6 +1,6 @@
 class BlocksController < ApplicationController
-  # вызывает ошибку несколько раз вызываю редирект
-  # after_action :redirect_block, only: [:create, :update]
+  # вызывает ошибку мол несколько раз вызываю редирект
+  # after_action :redirect_block, only: [:create, :update, :destroy]
 
   def create
     @block = BlockSave.(params)
@@ -17,20 +17,21 @@ class BlocksController < ApplicationController
   end
 
   def destroy
-    @block = Block.find params[:id]
-    @chapter = @block.chapter
-    @block.destroy
-
-    redirect_to chapter_path(@chapter)
+    @block = Block.find(params[:id]).destroy
+    redirect_block
   end
 
   private
 
   def redirect_block
-    if @block.chapter.nil?
-      redirect_to subsection_path(@block.subsection)
+    unless @block.nil?
+      if @block.chapter.nil?
+        redirect_to subsection_path(@block.subsection)
+      else
+        redirect_to chapter_path(@block.chapter)
+      end
     else
-      redirect_to chapter_path(@block.chapter)
+      redirect_to root_path
     end
   end
 end

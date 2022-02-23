@@ -1,11 +1,12 @@
 class BlockSave
   def self.call(params)
-    # connect = Chapter.find params[:chapter_id] || connect = Chapter.find params[:subsection_id] unless params[:chapter_id].nil?
     # надо будет как то покороче записать
-    if params[:chapter_id].nil?
+    if !params[:chapter_id].nil?
+      connect = Chapter.find params[:chapter_id]
+    elsif !params[:subsection_id].nil?
       connect = Subsection.find params[:subsection_id]
     else
-      connect = Chapter.find params[:chapter_id]
+      return
     end
 
     block_params = params[:block]

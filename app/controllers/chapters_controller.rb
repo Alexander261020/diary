@@ -12,7 +12,7 @@ class ChaptersController < ApplicationController
 
   def create
     @chapter = Chapter.create(chapter_params)
-    BlockSave.(params, @chapter)
+    BlockSave.(params)
 
     redirect_to root_path
   end
