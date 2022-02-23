@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :chapter do
-    name { "Chapter_#{rand(999)}" }
+    # генерируем разделы с разными именами
+    sequence(:name) { |n| "Number-#{n}?" }
   end
 end
