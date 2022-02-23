@@ -1,11 +1,14 @@
-<%= form_for @block do |f| %>
-  <%= f.text_area :comment, size: "100x2" %>
-  <%= f.number_field :number_line, class: "col-1 mb-2 align-top float-right" %>
-  <%= f.text_area :content, size: "100x5" %>
-  <%= f.text_area :link, size: "100x1" %>
+<%= form_for @block, html: { class: "row py-2 bg-dark rounded"} do |f| %>
+  <div class="col-10">
+    <%= f.text_area :comment, placeholder: 'add comment', class: "w-100" %>
+    <%= f.text_area :content, placeholder: 'add content', size: "x5", class: "w-100" %>
+    <%= f.text_area :link, placeholder: 'add link', size: "x1", class: "w-100" %>
+  </div>
+  <div class="col-2">
+    <%= f.submit "save block", class: "btn btn-primary mb-1 w-100" %>
+    <%= f.number_field :number_line, class: "col-3" %>
+  </div>
 
   <%= hidden_field_tag :chapter_id, @chapter.id unless @chapter.nil? %>
   <%= hidden_field_tag :subsection_id, @subsection.id unless @subsection.nil? %>
-
-  <%= f.submit 'save block', class: 'btn btn-primary' %>
 <% end %>

@@ -1,10 +1,9 @@
-<%= form_for @chapter do |f| %>
-  <!-- %= render partial: 'partials/form_errors', locals: {model: @user} %-->
+<%= form_for @chapter, html: { class: "row py-2 bg-dark rounded" } do |f| %>
 
-  <div class="form-group col-10 d-inline-block">
-    <%= f.label :name, class: "fw-bold" %>
-    <%= f.text_field :name, class: "mb-2 form-control p-1 pr-2" %>
+  <div class="form-group col-10 pt-1">
+    <%= f.text_field :name, placeholder: 'Chapter name', class: "mb-2 form-control p-1 pr-2" %>
   </div>
-
-  <%= f.submit 'save', class: 'btn btn-primary d-inline-block' %>
+  <div class="col-2">
+    <%= f.submit "save", class: "w-100 btn btn-primary" %>
+  </div>
 <% end %>
