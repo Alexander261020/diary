@@ -1,5 +1,5 @@
 class SubsectionsController < ApplicationController
-  before_action :find_subsection, only: [:show, :edit, :update]
+  before_action :find_subsection, only: [:show, :edit, :update, :destroy]
 
   def create
     chapter = Chapter.find params[:chapter_id]
@@ -19,6 +19,11 @@ class SubsectionsController < ApplicationController
 
   def edit
     @block = Block.new
+  end
+
+  def destroy
+    @subsection.destroy
+    redirect_to chapter_path(@subsection.chapter)
   end
 
   private

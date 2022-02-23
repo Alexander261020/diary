@@ -1,5 +1,5 @@
 <%= form_for @subsection, html: { class: "row py-2 bg-dark rounded my-2"} do |f| %>
-  <div class="form-group col-10 pt-1">
+  <div class="form-group col-8 pt-1">
     <%= f.text_field :name, placeholder: 'add subsection', class: "col-10 mb-2 form-control p-1 pr-2" %>
 
     <% unless @chapter.nil? %>
@@ -7,6 +7,14 @@
     <% end %>
   </div>
   <div class="col-2">
-    <%= f.submit "save Sub", class: "w-100 btn btn-primary d-inline-block" %>
+    <%= f.submit "save subsection", class: "w-100 btn btn-primary d-inline-block" %>
+  </div>
+
+  <div class="col-2">
+    <%= button_to "destroy", subsection_path(@subsection.id), method: :delete,
+      class: "btn btn-danger w-100",
+      # confirm так и не рабоатет!
+      data: {confirm: t(".destroy_confirm")}
+    %>
   </div>
 <% end %>
