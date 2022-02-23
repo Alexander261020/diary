@@ -1,4 +1,5 @@
 class BlocksController < ApplicationController
+  before_action :find_block, only: [:edit, :destroy, :switch, :switch_update]
   # вызывает ошибку мол несколько раз вызываю редирект
   # after_action :redirect_block, only: [:create, :update, :destroy]
 
@@ -13,15 +14,35 @@ class BlocksController < ApplicationController
   end
 
   def edit
-    @block = Block.find params[:id]
   end
 
   def destroy
-    @block = Block.find(params[:id]).destroy
+    @block.destroy
+    redirect_block
+  end
+
+  def switch
+  end
+
+  def switch_update
+    if !params[:chapter_id].nil?
+      @block.chapter = Chapter.find params[:chapter_id]
+      @block.subsection = nil
+      @block.save
+    elsif !params[:subsection_id].nil?
+      @block.subsection = Subsection.find params[:subsection_id]
+      @block.chapter = nil
+      @block.save
+    end
+
     redirect_block
   end
 
   private
+
+  def find_block
+    @block = Block.find params[:id]
+  end
 
   def redirect_block
     unless @block.nil?

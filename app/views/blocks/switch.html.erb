@@ -1,0 +1,38 @@
+<%= form_for @block, url: switch_update_path  do |f| %>
+  <% unless @block.chapter.nil? %>
+    <div class="bg-primary m-1 p-2 rounded">
+      <%= radio_button_tag :chapter_id, @block.chapter.id %>
+      <%= "Main chapter: #{@block.chapter.name}" %>
+    </div>
+
+    <% @block.chapter.subsections.each do |subsection| %>
+      <div class="bg-success m-1 p-2 rounded">
+        <%= radio_button_tag :subsection_id, subsection.id %>
+        <%= subsection.name %>
+      </div>
+    <% end %>
+  <% end %>
+
+
+  <% unless @block.subsection.nil? %>
+    <div class="bg-primary m-1 p-2 rounded">
+      <%= radio_button_tag :subsection_id, @block.subsection.id %>
+      <%= @block.subsection.name %>
+    </div>
+    <div class="bg-danger m-1 p-2 rounded">
+      <%= radio_button_tag :chapter_id, @block.subsection.chapter.id %>
+      <%= @block.subsection.chapter.name %>
+    </div>
+
+    <% @block.subsection.chapter.subsections.each do |subsection| %>
+      <% unless subsection.id == @block.subsection.id  %>
+        <div class="bg-success m-1 p-2 rounded">
+          <%= radio_button_tag :subsection_id, subsection.id %>
+          <%= subsection.name %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= submit_tag "switch block", class: "btn btn-dark mb-1" %>
+<% end %>

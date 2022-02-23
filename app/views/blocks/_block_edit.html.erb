@@ -1,5 +1,5 @@
-<div class="border border-dark m-1 p-2">
-  <div class="col-8 d-inline-block">
+<div class="row border border-dark m-1 p-2">
+  <div class="col-8 border border-dark">
     <% unless block_edit.comment.blank? %>
       <%= content_tag :div, block_edit.comment, class: "text-muted mt-1" %>
     <% end %>
@@ -13,17 +13,23 @@
     <% end %>
   </div>
 
-  <div class="col-3 d-inline-block align-top">
-    <div class="col-2 d-inline-block align-top">
+  <div class="col-4 border border-dark">
+    <div class="col-1 d-inline-block">
       <%= content_tag :span, block_edit.number_line %>
     </div>
-    <div class="col-4 d-inline-block align-top">
+
+    <div class="col-3 d-inline-block">
       <%= link_to "edit", edit_block_path(block_edit.id), class: "btn btn-dark w-100" %>
     </div>
 
-    <div class="col-4 d-inline-block align-top">
+    <div class="col-3 d-inline-block">
+      <%= link_to "switch", switch_block_path(block_edit.id), class: "btn btn-success w-100" %>
+    </div>
+
+    <div class="col-3 d-inline-block">
       <%= button_to "destroy", block_path(block_edit.id), method: :delete,
         class: "btn btn-danger w-100",
+        # confirm так и не рабоатет!
         data: {confirm: t(".destroy_confirm")} %>
     </div>
   </div>
