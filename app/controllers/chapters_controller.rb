@@ -2,7 +2,7 @@ class ChaptersController < ApplicationController
   before_action :find_chapter, only: [:show, :edit]
 
   def index
-    @chapters = Chapter.all
+    @chapters = Chapter.order(count_clicks: :DESC)
   end
 
   def new
