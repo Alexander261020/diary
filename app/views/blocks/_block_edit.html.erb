@@ -29,8 +29,7 @@
     <div class="col-3 d-inline-block">
       <%= button_to "destroy", block_path(block_edit.id), method: :delete,
         class: "btn btn-danger w-100",
-        # confirm так и не рабоатет!
-        data: {confirm: t(".destroy_confirm")} %>
+        onclick: "return confirm('Are you sure?')" %>
     </div>
   </div>
 </div>
