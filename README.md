@@ -18,5 +18,3 @@ bundle, rails css:install:bootstrap, yarn build:css, yarn build.
 Cтолкнулся с проблемой старой версии node.js, при обновлении которого мне было сказано что у меня установлено самая новейшая версия. Решение нашел через 
 [install node js](https://losst.ru/ustanovka-node-js-ubuntu-18-04)
 
-#### Для наполнения базы можно использовать команду: rails db:seed
-
