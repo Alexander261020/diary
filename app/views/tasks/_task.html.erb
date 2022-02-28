@@ -1,0 +1,7 @@
+<div class="row bg-<%= colors[task.status] %> p-1 rounded border border-dark m-1">
+  <div class="col-8"><%= task.title %></div>
+  <div class="col-3"><%= task.updated_at %></div>
+  <div class="col-1">
+    <%= link_to 'edit', edit_task_path(task.id), class: 'btn btn-primary' %>
+  </div>
+</div>

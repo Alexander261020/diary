@@ -1,0 +1,4 @@
+<div class="m-1 ">
+  <%= link_to 'create task', new_task_path, class: 'btn btn-primary' %>
+</div>
+<%= render partial: 'task', collection: @tasks, locals: { colors: @colors } %>

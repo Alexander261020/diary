@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   resources :errors
   resources :subsections, except: [:index, :new]
+
+  resources :tasks
 end

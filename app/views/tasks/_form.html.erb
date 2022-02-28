@@ -1,0 +1,9 @@
+<%= form_for @task, html: { class: "row py-2 bg-warning border border-dark rounded" } do |f| %>
+
+  <div class="form-group col-10 pt-1">
+    <%= f.text_field :title, placeholder: 'Title', class: "mb-2 form-control p-1" %>
+  </div>
+  <div class="col-2">
+    <%= f.submit "save", class: "w-100 btn btn-primary" %>
+  </div>
+<% end %>
