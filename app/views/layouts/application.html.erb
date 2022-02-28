@@ -7,26 +7,23 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <!--%= javascript_importmap_tags   defaults   javascript_include_tag :defaults %>  %-->
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-    <%= stylesheet_link_tag "application" %>
+    <!-- %= stylesheet_link_tag "application" %-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
 
   <body>
-  <style>
-
-  </style>
-    <div class="row bg-info p-2 mb-1">
-      <div class="col-10 m-auto">
-        <div class="col-9 d-inline-block">
+    <div class="row bg-info p-1 mb-1 border border-dark">
+      <div class="row col-10 m-auto">
+        <div class="col-8 d-inline-block border border-dark">
           <%= link_to t("message.main"), root_path, class: "btn btn-dark" %>
           <%= link_to t("message.back"), :back, class: "btn btn-dark" %>
           <%= link_to "Create chapter", new_chapter_path, class: "btn btn-dark" %>
         </div>
-        <div class="col-2 d-inline-block">
+        <div class="col-4 d-inline-block border border-dark">
           <%= link_to t("message.error"), errors_path, class: "btn btn-dark" %>
           <%= link_to "create error", new_error_path, class: "btn btn-dark" %>
+          <%= link_to "diary", new_error_path, class: "btn btn-dark" %>
         </div>
       </div>
     </div>
