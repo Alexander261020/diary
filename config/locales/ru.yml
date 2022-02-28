@@ -1,0 +1,21 @@
+ru:
+  chapters:
+    name: "Раздел"
+    input_name: "Название раздела"
+    main: "Главная"
+    create: "Создать раздел"
+
+  subsection:
+    name: "Подраздел"
+    create: "Создать подраздел"
+
+  errors:
+    name: "Ошибки"
+    create: "Создать ошибку"
+
+  tasks:
+    name: "Задачи"
+
+  message:
+    back: "Назад"
+    edit: "Редактировать"

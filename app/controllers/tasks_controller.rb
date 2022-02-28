@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   COLOR = ['warning', 'success', 'primary']
 
   def index
-    @tasks = Task.order(updated_at: :desc)
+    @tasks = Task.order(:status).order(updated_at: :desc)
     @colors = COLOR
   end
 
@@ -12,7 +12,9 @@ class TasksController < ApplicationController
   def edit
   end
 
-  def destroy
+  def update
+    Task.find(params[:id]).update(task_params)
+    redirect_to tasks_path
   end
 
   def create

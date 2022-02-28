@@ -1,7 +1,18 @@
 <div class="row bg-<%= colors[task.status] %> p-1 rounded border border-dark m-1">
-  <div class="col-8"><%= task.title %></div>
+  <div class="col-6"><%= task.title %></div>
   <div class="col-3"><%= task.updated_at %></div>
+
   <div class="col-1">
-    <%= link_to 'edit', edit_task_path(task.id), class: 'btn btn-primary' %>
+    <%= link_to 'edit', edit_task_path(task.id), class: 'w-100 btn btn-primary  border border-dark' %>
   </div>
+
+  <%= form_for task, html: { class: 'col-1' } do |f| %>
+    <%= f.hidden_field :status, value: 1 %>
+    <%= f.submit "finish", class: "w-100 btn btn-success border border-dark" %>
+  <% end %>
+
+  <%= form_for task, html: { class: 'col-1' }  do |f| %>
+    <%= f.hidden_field :status, value: 0 %>
+    <%= f.submit "work", class: "w-100 btn btn-warning  border border-dark" %>
+  <% end %>
 </div>
