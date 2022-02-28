@@ -1,24 +1,21 @@
-# README
+# Дневник программиста
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Мой собственный проект, предназначен для записи опыта работы (полезный ссылки, наблюдения, исправления ошибок и т.п.). 
+Поскольку планируется запускать только локально, регистрация не предусмотрена.
 
-Things you may want to cover:
+## Что под "капотом"
 
-* Ruby version
+* Ruby 3.0.3
+* Rails 7
+* Для сбори assets использовал esbuild.
+* Bootstrap
+* как всегда PostgreSQL для БД
 
-* System dependencies
+## Для запуска
 
-* Configuration
+нужны yarn, node.
+Выполняем команды:
+bundle, rails css:install:bootstrap, yarn build:css, yarn build.
+Cтолкнулся с проблемой старой версии node.js, при обновлении которого мне было сказано что у меня установлено самая новейшая версия. Решение нашел через 
+[install node js](https://losst.ru/ustanovka-node-js-ubuntu-18-04)
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
