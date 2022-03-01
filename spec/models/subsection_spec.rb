@@ -1,15 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe Subsection, type: :model do
-  # без этой строки выдает ошибку
-  let(:name) {}
-
+RSpec.describe Subsection, type: :model, mod: true  do
   context 'validations check' do
     it { should validate_presence_of :name }
   end
 
   context 'return values' do
-    let(:subsection) { FactoryBot.create(:subsection) }
+    let(:subsection) { create(:subsection) }
 
     it 'should return name' do
       expect(subsection.name).to eq('Sub-1')

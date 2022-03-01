@@ -1,18 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe Chapter, type: :model do
-  # без этой строки выдает ошибку
-  let(:name) {}
+RSpec.describe Chapter, type: :model, mod: true  do
+  let(:chapter) { create(:chapter, name: 'Number-1') }
 
-  context 'validations check' do
+  context 'check validation' do
     it { should validate_presence_of :name }
   end
 
-  context 'check return name' do
-    let(:chapter1) { FactoryBot.create(:chapter) }
-
+  context 'check return variables' do
     it 'sould return name chapter' do
-      expect(chapter1.name).to eq('Number-1')
+      expect(chapter.name).to eq('Number-1')
     end
   end
 end
