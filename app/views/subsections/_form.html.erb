@@ -16,8 +16,8 @@
     <div class="col-2 align-top">
       <%= button_to "destroy", subsection_path(@subsection.id), method: :delete,
         class: "btn btn-danger w-100",
-        # confirm так и не рабоатет!
-        data: {confirm: t(".destroy_confirm")} %>
+        onclick: "return confirm('#{t("subsection.comments.destroy")}')"
+      %>
     </div>
   <% end %>
 </div>

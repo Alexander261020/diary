@@ -5,13 +5,15 @@ class SubsectionsController < ApplicationController
     chapter = Chapter.find params[:chapter_id]
     chapter.subsections.create(subsection_params)
 
-    redirect_to chapter_path(chapter), notice: I18n.t('subsection.comments.create')
+    flash[:success] = I18n.t('subsection.comments.create')
+    redirect_to chapter_path(chapter)
   end
 
   def update
     @subsection.update(subsection_params)
 
-    redirect_to subsection_path(@subsection), notice: I18n.t('subsection.comments.edit')
+    flash[:success] = I18n.t('subsection.comments.edit')
+    redirect_to subsection_path(@subsection)
   end
 
   def show
@@ -23,6 +25,7 @@ class SubsectionsController < ApplicationController
 
   def destroy
     @subsection.destroy
+    flash[:danger] = I18n.t('subsection.destroy')
     redirect_to chapter_path(@subsection.chapter)
   end
 

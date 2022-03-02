@@ -29,7 +29,7 @@
 
     <div class="col-11 m-auto">
       <% flash.each do |key, value| %>
-        <div class="alert alert-success m-2" id="win-message">
+        <div class="alert alert-<%=key %> m-2" id="win-message">
           <button class="btn btn-close float-end" id="btn-close"></button>
           <%= value %>
         </div>

@@ -33,7 +33,8 @@ class ChaptersController < ApplicationController
     @chapter = Chapter.find params[:id]
     @chapter.update(chapter_params)
 
-    redirect_to chapter_path(@chapter), notice: I18n.t('chapter.comments.edit')
+    flash[:success] = I18n.t('chapter.comments.edit')
+    redirect_to chapter_path(@chapter)
   end
 
   def destroy

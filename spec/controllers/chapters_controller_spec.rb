@@ -29,6 +29,8 @@ RSpec.describe ChaptersController, type: :controller, con: true do
     it 'check #create' do
       post :create, params: {chapter: {name: 'chapter-1' } }
       expect(response.status).to eq(302)
+      # Должен отредеректить на главную
+      expect(response).to redirect_to(root_path)
     end
 
     it 'check #edit' do
