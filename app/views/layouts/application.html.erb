@@ -15,18 +15,26 @@
     <div class="row bg-info p-2">
       <div class="row col-10 m-auto">
         <div class="col-8">
-          <%= link_to t("chapters.main"), root_path, class: "btn btn-dark" %>
+          <%= link_to t("chapter.main"), root_path, class: "btn btn-dark" %>
           <%= link_to t("message.back"), :back, class: "btn btn-dark" %>
-          <%= link_to t("chapters.create"), new_chapter_path, class: "btn btn-dark" %>
+          <%= link_to t("chapter.create"), new_chapter_path, class: "btn btn-dark" %>
         </div>
         <div class="col-4">
-          <%= link_to t("errors.name"), errors_path, class: "btn btn-dark" %>
-          <%= link_to t("errors.create"), new_error_path, class: "btn btn-dark" %>
+          <%= link_to t("error.name"), errors_path, class: "btn btn-dark" %>
+          <%= link_to t("error.create"), new_error_path, class: "btn btn-dark" %>
           <%= link_to t("tasks.name"), tasks_path, class: "btn btn-dark" %>
         </div>
       </div>
     </div>
+
     <div class="col-11 m-auto">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-success m-2" id="win-message">
+          <button class="btn btn-close float-end" id="btn-close"></button>
+          <%= value %>
+        </div>
+      <% end %>
+
       <%= yield %>
     </div>
   </body>

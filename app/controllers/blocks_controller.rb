@@ -47,9 +47,9 @@ class BlocksController < ApplicationController
   def redirect_block
     unless @block.nil?
       if @block.chapter.nil?
-        redirect_to subsection_path(@block.subsection)
+        redirect_to subsection_path(@block.subsection), notice: I18n.t('block.comments.edit')
       else
-        redirect_to chapter_path(@block.chapter)
+        redirect_to chapter_path(@block.chapter), notice: I18n.t('block.comments.edit')
       end
     else
       redirect_to root_path

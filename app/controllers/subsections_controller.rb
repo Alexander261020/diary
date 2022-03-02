@@ -5,13 +5,13 @@ class SubsectionsController < ApplicationController
     chapter = Chapter.find params[:chapter_id]
     chapter.subsections.create(subsection_params)
 
-    redirect_to chapter_path(chapter)
+    redirect_to chapter_path(chapter), notice: I18n.t('subsection.comments.create')
   end
 
   def update
     @subsection.update(subsection_params)
 
-    redirect_to subsection_path(@subsection)
+    redirect_to subsection_path(@subsection), notice: I18n.t('subsection.comments.edit')
   end
 
   def show

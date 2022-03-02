@@ -7,6 +7,7 @@ import * as ActiveStorage from "@rails/activestorage"
 
 import 'bootstrap/js/dist/dropdown'
 import 'bootstrap/js/dist/collapse'
+import './hide_window'
 // import './controllers/*'
 
 Rails.start()
