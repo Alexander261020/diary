@@ -3,6 +3,7 @@ class ChaptersController < ApplicationController
 
   def index
     @chapters = Chapter.order(count_clicks: :DESC)
+    @last_updated_chapter = Chapter.order(updated_at: :desc).first
   end
 
   def new
