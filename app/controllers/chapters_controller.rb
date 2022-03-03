@@ -12,9 +12,14 @@ class ChaptersController < ApplicationController
   end
 
   def create
-    @chapter = Chapter.create(chapter_params)
-    BlockSave.(params)
+    @chapter = Chapter.new(chapter_params)
+    if @chapter.save
+      flash[:success] = I18n.t('chapter.comments.create')
+    else
+      flash[:danger] = @chapter.errors[:name].first
+    end
 
+    BlockSave.(params)
     redirect_to root_path
   end
 

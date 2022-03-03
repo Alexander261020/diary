@@ -1,7 +1,7 @@
 <%= form_for @chapter, html: { class: "row py-2 bg-dark rounded" } do |f| %>
 
   <div class="form-group col-10 pt-1">
-    <%= f.text_field :name, placeholder: t('chapters.input_name'), class: "mb-2 form-control p-1 pr-2" %>
+    <%= f.text_field :name, placeholder: t('chapter.name'), class: "mb-2 form-control p-1 pr-2" %>
   </div>
   <div class="col-2">
     <%= f.submit "save", class: "w-100 btn btn-primary" %>

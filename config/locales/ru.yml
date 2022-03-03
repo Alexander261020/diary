@@ -1,11 +1,23 @@
 ru:
+  activerecord:
+    errors:
+      models:
+        chapter:
+          attributes:
+            name:
+              blank: "Поле 'Раздел' не может быть пустым!"
+              taken: "Такое название раздела уже существует!"
+
   chapter:
     name: "Раздел"
     input_name: "Название раздела"
     main: "Главная"
     create: "Создать раздел"
+    errors:
+      blank: "Поле \"Раздел\" не может быть пустым!!!"
     comments:
       create: "Раздел создан"
+      create_error: "Ошибка создания раздела"
       edit: "Раздел успешно отредактирован"
 
   subsection:

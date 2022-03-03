@@ -1,5 +1,5 @@
 <div class="row border border-dark m-1 p-2">
-  <div class="col-8 border border-dark">
+  <div class="col-8">
     <% unless block_edit.comment.blank? %>
       <%= content_tag :div, block_edit.comment, class: "text-muted mt-1" %>
     <% end %>
@@ -13,7 +13,7 @@
     <% end %>
   </div>
 
-  <div class="col-4 border border-dark">
+  <div class="col-4">
     <div class="col-1 d-inline-block">
       <%= content_tag :span, block_edit.number_line %>
     </div>
