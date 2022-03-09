@@ -4,7 +4,19 @@
   <% end %>
 
   <% unless block.content.blank? %>
-    <%= content_tag :div, content_tag(:pre, block.content), class: 'mt-1' %>
+    <!-- делим по строкам -->
+    <% block.content.split("\r\n").each do |item| %>
+      <!-- проверяем наличие нужных символов -->
+      <% if item.include?("#=>") %>
+        <% array_str = item.split("#=>") %>
+        <%= array_str.first %> &nbsp;&nbsp; <span class="text-success">#=> <%= array_str.last %></span><br>
+      <% elsif item.include?("#") %>
+        <% array_str = item.split("#") %>
+        <%= array_str.first %> &nbsp;&nbsp; <span class="text-muted"># <%= array_str.last %></span><br>
+      <% else %>
+        <%= item %><br>
+      <% end %>
+    <% end %>
   <% end %>
 
   <% unless block.link.blank? %>
