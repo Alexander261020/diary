@@ -10,7 +10,7 @@ import 'bootstrap/js/dist/collapse'
 import './hide_window'
 // import './controllers/*'
 
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
+// Rails.start()
+// Turbolinks.start()
+// ActiveStorage.start()
 import * as bootstrap from "bootstrap"

@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :subsections, except: [:index, :new]
 
   resources :tasks
+
+  get 'ajax/show'
 end

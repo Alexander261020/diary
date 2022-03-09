@@ -7,3 +7,18 @@ function hide_window() {
     });
   }
 }
+
+let search = document.getElementById('search');
+search.addEventListener('keyup', function () {
+  let block = document.getElementById('conteiner');
+  $.ajax({
+    type:"get",
+    url:'http://localhost:3000/ajax/show',
+    data:{'search' :search.value},
+    cache:false,
+    success:function(data){
+      //console.log(data);
+      block.innerHTML = data;
+    }
+  });
+});

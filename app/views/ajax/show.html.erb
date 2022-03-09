@@ -1,0 +1,18 @@
+<%= @search %>
+<% unless @chapters.nil? %>
+  <div class="row">
+    <%= render partial: 'chapters/chapter', collection: @chapters %>
+  </div>
+<% end %>
+
+<% unless @subsections.nil? %>
+  <div class="row">
+    <%= render partial: 'subsections/subsection', collection: @subsections %>
+  </div>
+<% end %>
+
+<% unless @blocks.nil? %>
+  <div class="row">
+    <%= render partial: 'blocks/block', collection: @blocks %>
+  </div>
+<% end %>
