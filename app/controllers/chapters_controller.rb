@@ -25,8 +25,8 @@ class ChaptersController < ApplicationController
 
   def show
     # фиксируем клик, нужно для активности
-    @chapter.count_clicks += 1
-    @chapter.save
+    # LinkClickedJob.perform_later(@chapter)
+    LinkClickedJob.set(wait: 10.second).perform_later(@chapter)
   end
 
   def edit
