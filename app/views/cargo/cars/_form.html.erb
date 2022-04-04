@@ -1,0 +1,34 @@
+<%= form_with(model: cargo_car) do |form| %>
+  <% if cargo_car.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(cargo_car.errors.count, "error") %> prohibited this cargo_car from being saved:</h2>
+
+      <ul>
+        <% cargo_car.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :brand, style: "display: block" %>
+    <%= form.text_field :brand %>
+  </div>
+
+  <div>
+    <%= form.label :reg_mark, style: "display: block" %>
+    <%= form.text_field :reg_mard %>
+  </div>
+
+  <div>
+    <%= form.label :p_mark, style: "display: block" %>
+    <%= form.text_field :p_mark %>
+  </div>
+
+  <%= hidden_field_tag :id, carrier.id %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
