@@ -1,0 +1,27 @@
+<%= form_with(model: cargo_contact) do |form| %>
+  <% if cargo_contact.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(cargo_contact.errors.count, "error") %> prohibited this cargo_contact from being saved:</h2>
+
+      <ul>
+        <% cargo_contact.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :tel, style: "display: block" %>
+    <%= form.text_field :tel %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

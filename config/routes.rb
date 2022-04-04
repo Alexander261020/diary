@@ -16,10 +16,10 @@ Rails.application.routes.draw do
   namespace :cargo do
     resources :carriers
     resources :customers
-    # new_cargo_car GET    /cargo/cars/new(.:format)           cargo/cars#new
     resources :cars, except: [:new, :index]
     get "/carrier/:id/cars/new", to: "cars#new", as: "new_car"
     resources :drivers, except: [:new, :index]
     get "/carrier/:id/drivers/new", to: "drivers#new", as: "new_driver"
+    resources :contacts
   end
 end
