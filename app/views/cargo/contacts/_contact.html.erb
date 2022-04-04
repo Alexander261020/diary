@@ -1,12 +1,8 @@
 <div id="<%= dom_id contact %>">
-  <p>
-    <strong>Tel:</strong>
-    <%= contact.tel %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= contact.email %>
-  </p>
-
+  <% if contact.tel.present? %>
+    Tel: <%= contact.tel %>
+  <% end %>
+  <% if contact.email.present? %>
+    Tel: <%= contact.email %>
+  <% end %>
 </div>

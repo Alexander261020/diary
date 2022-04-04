@@ -32,6 +32,12 @@
         <%= carrier.adress %>
       </div>
     <% end %>
+
+    <div class="border-bottom my-2">
+      <% carrier.contacts.each do |contact| %>
+        <%= render "cargo/contacts/contact", contact: contact %>
+      <% end %>
+    </div>
   </div>
 
   <div class="col-6 p-2">
@@ -53,6 +59,7 @@
       <% carrier.drivers.each do |driver| %>
         <div>
           <%= link_to  driver.name, cargo_driver_path(driver.id) %>
+          <%= driver.contacts.first.tel %>
         </div>
       <% end %>
     </div>

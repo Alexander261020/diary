@@ -24,6 +24,7 @@ class Cargo::CustomersController < ApplicationController
     @cargo_customer = Cargo::Customer.new(cargo_customer_params)
 
     if @cargo_customer.save
+      AddContact.(@cargo_customer, params)
       redirect_to @cargo_customer, notice: "Customer was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -33,6 +34,7 @@ class Cargo::CustomersController < ApplicationController
   # PATCH/PUT /cargo/customers/1
   def update
     if @cargo_customer.update(cargo_customer_params)
+      AddContact.(@cargo_customer, params)
       redirect_to @cargo_customer, notice: "Customer was successfully updated."
     else
       render :edit, status: :unprocessable_entity

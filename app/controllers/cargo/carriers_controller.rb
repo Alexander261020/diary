@@ -24,6 +24,7 @@ class Cargo::CarriersController < ApplicationController
     @cargo_carrier = Cargo::Carrier.new(cargo_carrier_params)
 
     if @cargo_carrier.save
+      AddContact.(@cargo_carrier, params)
       redirect_to @cargo_carrier, notice: "Carrier was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -33,6 +34,7 @@ class Cargo::CarriersController < ApplicationController
   # PATCH/PUT /cargo/carriers/1
   def update
     if @cargo_carrier.update(cargo_carrier_params)
+      AddContact.(@cargo_carrier, params)
       redirect_to @cargo_carrier, notice: "Carrier was successfully updated."
     else
       render :edit, status: :unprocessable_entity

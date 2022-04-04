@@ -36,7 +36,9 @@
     <%= form.text_field :adress %>
   </div>
 
+  <%= render "cargo/contacts/form" %>
+
   <div>
-    <%= form.submit %>
+    <%= form.submit "Update customer", class: "btn btn-success my-2" %>
   </div>
 <% end %>

@@ -4,14 +4,23 @@
     <%= driver.name %>
   </p>
 
-  <p>
-    <strong>Passport:</strong>
-    <%= driver.passport %>
-  </p>
+  <% if driver.passport.present? %>
+    <p>
+      <strong>Passport:</strong>
+      <%= driver.passport %>
+    </p>
+  <% end %>
 
-  <p>
-    <strong>Vy:</strong>
-    <%= driver.vy %>
-  </p>
+  <% if driver.vy.present? %>
+    <p>
+      <strong>Vy:</strong>
+      <%= driver.vy %>
+    </p>
+  <% end %>
 
+  <div class="border-bottom my-2">
+    <% driver.contacts.each do |contact| %>
+      <%= render "cargo/contacts/contact", contact: contact %>
+    <% end %>
+  </div>
 </div>

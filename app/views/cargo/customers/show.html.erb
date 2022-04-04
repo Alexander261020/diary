@@ -3,9 +3,10 @@
 <%= render @cargo_customer %>
 
 <div>
-  <%= link_to "Edit this customer", edit_cargo_customer_path(@cargo_customer) %> |
-  <%= link_to "Back to customers", cargo_customers_path %>
+  <%= link_to "Edit this customer", edit_cargo_customer_path(@cargo_customer), class: "btn btn-success my-2" %>
+  <%= link_to "Back to customers", cargo_customers_path, class: "btn btn-success my-2" %>
 
   <%= button_to "Destroy this customer", @cargo_customer, method: :delete,
-    onclick: "return confirm('Are you sure?')" %>
+    onclick: "return confirm('Are you sure?')",
+    class: "btn btn-danger" %>
 </div>

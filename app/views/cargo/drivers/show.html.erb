@@ -3,8 +3,10 @@
 <%= render @cargo_driver %>
 
 <div>
-  <%= link_to "Edit this driver", edit_cargo_driver_path(@cargo_driver) %>
+  <%= link_to "Edit this driver", edit_cargo_driver_path(@cargo_driver),
+    class: "btn btn-success my-2" %>
 
   <%= button_to "Destroy this driver", @cargo_driver, method: :delete,
-    onclick: "return confirm('Are you sure?')" %>
+    onclick: "return confirm('Are you sure?')",
+    class: "btn btn-danger" %>
 </div>

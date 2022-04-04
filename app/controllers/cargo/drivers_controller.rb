@@ -21,6 +21,7 @@ class Cargo::DriversController < ApplicationController
     @cargo_driver.carrier = @carrier
 
     if @cargo_driver.save
+      AddContact.(@cargo_driver, params)
       @carrier.drivers.push(@cargo_driver)
       redirect_to @cargo_driver, notice: "Driver was successfully created."
     else
@@ -31,6 +32,7 @@ class Cargo::DriversController < ApplicationController
   # PATCH/PUT /cargo/drivers/1
   def update
     if @cargo_driver.update(cargo_driver_params)
+      AddContact.(@cargo_driver, params)
       redirect_to @cargo_driver, notice: "Driver was successfully updated."
     else
       render :edit, status: :unprocessable_entity

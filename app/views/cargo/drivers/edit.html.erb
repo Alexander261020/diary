@@ -2,9 +2,6 @@
 
 <%= render "form", cargo_driver: @cargo_driver, carrier: @cargo_driver.carrier %>
 
-<br>
-
 <div>
-  <%= link_to "Show this driver", @cargo_driver %> |
-  <%= link_to "Back to drivers", cargo_drivers_path %>
+  <%= link_to "Show this driver", @cargo_driver, class: "btn btn-success" %>
 </div>

@@ -1,27 +1,38 @@
 <div id="<%= dom_id customer %>">
-  <p>
-    <strong>Name:</strong>
-    <%= customer.name %>
-  </p>
+  <div class="border-bottom">
+    <div>
+      <strong>Name:</strong>
+      <%= customer.name %>
+    </div>
+    <% if customer.inn.present? %>
+      <div>
+        <strong>Inn:</strong>
+        <%= customer.inn %>
+      </div>
+    <% end %>
+    <% if customer.ogrn.present? %>
+      <div>
+        <strong>Ogrn:</strong>
+        <%= customer.ogrn %>
+      </div>
+    <% end %>
+    <% if customer.passport.present? %>
+      <div>
+        <strong>Passport:</strong>
+        <%= customer.passport %>
+      </div>
+    <% end %>
+    <% if customer.adress.present? %>
+      <div>
+        <strong>Adress:</strong>
+        <%= customer.adress %>
+      </div>
+    <% end %>
+  </div>
 
-  <p>
-    <strong>Inn:</strong>
-    <%= customer.inn %>
-  </p>
-
-  <p>
-    <strong>Ogrn:</strong>
-    <%= customer.ogrn %>
-  </p>
-
-  <p>
-    <strong>Passport:</strong>
-    <%= customer.passport %>
-  </p>
-
-  <p>
-    <strong>Adress:</strong>
-    <%= customer.adress %>
-  </p>
-
+  <div class="border-bottom my-2">
+    <% customer.contacts.each do |contact| %>
+      <%= render "cargo/contacts/contact", contact: contact %>
+    <% end %>
+  </div>
 </div>

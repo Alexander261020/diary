@@ -28,7 +28,9 @@
 
   <%= hidden_field_tag :id, carrier.id %>
 
+  <%= render "cargo/contacts/form" %>
+
   <div>
-    <%= form.submit %>
+    <%= form.submit "Update driver", class: "btn btn-success my-2" %>
   </div>
 <% end %>
