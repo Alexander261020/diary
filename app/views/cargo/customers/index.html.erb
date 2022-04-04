@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+<%= render "cargo/buttons" %>
+<div class="row">
+  <div class="col-3"><h2>Customers</h2></div>
+  <div class="col-3"><%= link_to "New customer", new_cargo_customer_path, class: "btn btn-success w-auto" %></div>
+</div>
+
+
+<div id="cargo_customers">
+  <% @cargo_customers.each do |cargo_customer| %>
+    <%= render "customer_name", customer: cargo_customer %>
+    <p>
+      <%= link_to "Show this customer", cargo_customer %>
+    </p>
+  <% end %>
+</div>

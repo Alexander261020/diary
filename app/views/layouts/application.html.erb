@@ -20,9 +20,11 @@
           <%= link_to t("chapter.create"), new_chapter_path, class: "btn btn-dark" %>
         </div>
 
-        <div class="col-4">
+        <div class="col-3">
           <%= text_field_tag :search, nil, placeholder: t("message.search"), class: "mb-2 w-100" %>
         </div>
+
+        <%= link_to "CARGO", cargo_customers_path, class: "btn btn-success w-auto" %>
 
         <div class="col-4">
           <%= link_to t("error.name"), errors_path, class: "btn btn-dark" %>
