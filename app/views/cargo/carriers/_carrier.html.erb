@@ -33,16 +33,28 @@
       </div>
     <% end %>
   </div>
+
   <div class="col-6 p-2">
-    <div>All cars: <%= carrier.cars.size %></div>
-    <% carrier.cars.each do |car| %>
-      <div>
-        <%= car.brand %>
-        <strong>
-          <%= link_to car.reg_mark, cargo_car_path(car.id) %>
-        </strong>
-        <% if car.p_mark.present? %> П/П:<%= car.p_mark %><% end %>
-      </div>
-    <% end %>
+    <div class="border-bottom">
+      <div>Cars: <%= carrier.cars.size %></div>
+      <% carrier.cars.each do |car| %>
+        <div>
+          <%= car.brand %>
+          <strong>
+            <%= link_to car.reg_mark, cargo_car_path(car.id) %>
+          </strong>
+          <% if car.p_mark.present? %> П/П:<%= car.p_mark %><% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="border-bottom">
+      <div>Drivers: <%= carrier.drivers.size %></div>
+      <% carrier.drivers.each do |driver| %>
+        <div>
+          <%= link_to  driver.name, cargo_driver_path(driver.id) %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

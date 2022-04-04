@@ -1,0 +1,34 @@
+<%= form_with(model: cargo_driver) do |form| %>
+  <% if cargo_driver.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(cargo_driver.errors.count, "error") %> prohibited this cargo_driver from being saved:</h2>
+
+      <ul>
+        <% cargo_driver.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :passport, style: "display: block" %>
+    <%= form.text_field :passport %>
+  </div>
+
+  <div>
+    <%= form.label :vy, style: "display: block" %>
+    <%= form.text_field :vy %>
+  </div>
+
+  <%= hidden_field_tag :id, carrier.id %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

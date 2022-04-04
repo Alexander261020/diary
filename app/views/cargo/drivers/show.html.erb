@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @cargo_driver %>
+
+<div>
+  <%= link_to "Edit this driver", edit_cargo_driver_path(@cargo_driver) %>
+
+  <%= button_to "Destroy this driver", @cargo_driver, method: :delete,
+    onclick: "return confirm('Are you sure?')" %>
+</div>

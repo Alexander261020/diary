@@ -2,11 +2,6 @@ class Cargo::CarsController < ApplicationController
   before_action :set_cargo_car, only: %i[ show edit update destroy ]
   before_action :set_cargo_carrier, only: %i[ new create ]
 
-  # GET /cargo/cars
-  def index
-    @cargo_cars = Cargo::Car.all
-  end
-
   # GET /cargo/cars/1
   def show
   end
@@ -46,7 +41,7 @@ class Cargo::CarsController < ApplicationController
   # DELETE /cargo/cars/1
   def destroy
     @cargo_car.destroy
-    redirect_to cargo_cars_url, notice: "Car was successfully destroyed."
+    redirect_to cargo_carrier_path(@cargo_car.carrier), notice: "Car was successfully destroyed."
   end
 
   private

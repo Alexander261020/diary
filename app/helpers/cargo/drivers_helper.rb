@@ -1,0 +1,2 @@
+module Cargo::DriversHelper
+end

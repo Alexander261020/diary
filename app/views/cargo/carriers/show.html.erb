@@ -1,7 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @cargo_carrier %>
-  <%= link_to "Add car", cargo_new_car_path(@cargo_carrier), class: "btn btn-dark" %>
+<%= link_to "Add car", cargo_new_car_path(@cargo_carrier), class: "btn btn-info" %>
+<%= link_to "Add driver", cargo_new_driver_path(@cargo_carrier), class: "btn btn-info" %>
+
 <div>
   <%= link_to "Edit this carrier", edit_cargo_carrier_path(@cargo_carrier), class: "btn btn-success my-2" %>
   <%= link_to "Back to carriers", cargo_carriers_path, class: "btn btn-success my-2" %>
