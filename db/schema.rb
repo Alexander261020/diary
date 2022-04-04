@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_04_090250) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_04_093410) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,6 +43,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_04_090250) do
     t.string "p_mark"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "carrier_id"
+    t.index ["carrier_id"], name: "index_cargo_cars_on_carrier_id"
   end
 
   create_table "cargo_customers", force: :cascade do |t|

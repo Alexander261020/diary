@@ -1,27 +1,48 @@
-<div id="<%= dom_id carrier %>">
-  <p>
-    <strong>Name:</strong>
-    <%= carrier.name %>
-  </p>
+<div class="row">
+  <div class="col-6 p-2" id="<%= dom_id carrier %>">
+    <div>
+      <strong>Name:</strong>
+      <%= carrier.name %>
+    </div>
 
-  <p>
-    <strong>Inn:</strong>
-    <%= carrier.inn %>
-  </p>
+    <% if carrier.inn.present? %>
+      <div>
+        <strong>Inn:</strong>
+        <%= carrier.inn %>
+      </div>
+    <% end %>
 
-  <p>
-    <strong>Ogrn:</strong>
-    <%= carrier.ogrn %>
-  </p>
+    <% if carrier.ogrn.present? %>
+      <div>
+        <strong>Ogrn:</strong>
+        <%= carrier.ogrn %>
+      </div>
+    <% end %>
 
-  <p>
-    <strong>Passport:</strong>
-    <%= carrier.passport %>
-  </p>
+    <% if carrier.ogrn.present? %>
+      <div>
+        <strong>Passport:</strong>
+        <%= carrier.passport %>
+      </div>
+    <% end %>
 
-  <p>
-    <strong>Adress:</strong>
-    <%= carrier.adress %>
-  </p>
-
+    <% if carrier.ogrn.present? %>
+      <div>
+        <strong>Adress:</strong>
+        <%= carrier.adress %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-6 p-2">
+    <div>All cars: <%= carrier.cars.size %></div>
+    <% carrier.cars.each do |car| %>
+      <div>
+        <%= car.brand %>
+        <strong>
+          <%= link_to car.reg_mark, cargo_car_path(car.id) %>
+        </strong>
+        <% if car.p_mark.present? %> П/П:<%= car.p_mark %><% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

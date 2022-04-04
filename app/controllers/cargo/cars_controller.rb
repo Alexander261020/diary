@@ -26,8 +26,7 @@ class Cargo::CarsController < ApplicationController
     @cargo_car.carrier = @carrier
 
     if @cargo_car.save
-      @carrier.cars = @cargo_car
-      @carrier.save
+      @carrier.cars.push(@cargo_car)
 
       redirect_to @cargo_car, notice: "Car was successfully created."
     else
