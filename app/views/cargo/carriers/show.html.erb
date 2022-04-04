@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @cargo_carrier %>
+
+<div>
+  <%= link_to "Edit this carrier", edit_cargo_carrier_path(@cargo_carrier) %> |
+  <%= link_to "Back to carriers", cargo_carriers_path %>
+
+  <%= button_to "Destroy this carrier", @cargo_carrier, method: :delete,
+    onclick: "return confirm('Are you sure?')" %>
+</div>

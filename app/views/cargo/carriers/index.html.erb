@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+<%= render "cargo/buttons" %>
+<div class="row border-bottom">
+  <div class="col-3"><h2>Carriers</h2></div>
+  <div class="col-3"><%= link_to "New carrier", new_cargo_carrier_path, class: "btn btn-success w-auto" %></div>
+</div>
+
+<div id="cargo_carriers">
+  <% @cargo_carriers.each do |cargo_carrier| %>
+    <%= render "carrier_name", carrier: cargo_carrier %>
+  <% end %>
+</div>
