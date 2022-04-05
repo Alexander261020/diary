@@ -1,4 +1,6 @@
 class Cargo::CustomersController < ApplicationController
+  layout "cargo"
+
   before_action :set_cargo_customer, only: %i[ show edit update destroy ]
 
   def index

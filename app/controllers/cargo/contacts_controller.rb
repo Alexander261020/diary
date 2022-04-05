@@ -1,4 +1,6 @@
 class Cargo::ContactsController < ApplicationController
+  layout "cargo"
+
   before_action :set_cargo_contact
 
   def edit

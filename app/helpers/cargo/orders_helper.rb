@@ -1,0 +1,2 @@
+module Cargo::OrdersHelper
+end

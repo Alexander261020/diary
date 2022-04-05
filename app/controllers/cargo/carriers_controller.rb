@@ -1,4 +1,6 @@
 class Cargo::CarriersController < ApplicationController
+  layout "cargo"
+
   before_action :set_cargo_carrier, only: %i[ show edit update destroy ]
 
   # GET /cargo/carriers

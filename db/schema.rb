@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_05_100140) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_05_141745) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,6 +79,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_05_100140) do
     t.datetime "updated_at", null: false
     t.integer "carrier_id"
     t.index ["carrier_id"], name: "index_cargo_drivers_on_carrier_id"
+  end
+
+  create_table "cargo_orders", force: :cascade do |t|
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "carriers", force: :cascade do |t|

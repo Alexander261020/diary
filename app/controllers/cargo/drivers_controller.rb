@@ -1,4 +1,6 @@
 class Cargo::DriversController < ApplicationController
+  layout "cargo"
+
   before_action :set_cargo_driver, only: %i[ show edit update destroy ]
   before_action :set_cargo_carrier, only: %i[ new create ]
 

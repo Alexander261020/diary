@@ -1,0 +1,8 @@
+<%= render @cargo_order %>
+
+<div>
+  <%= link_to "Edit this order", edit_cargo_order_path(@cargo_order) %> |
+  <%= link_to "Back to orders", cargo_orders_path %>
+
+  <%= button_to "Destroy this order", @cargo_order, method: :delete %>
+</div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CARGO</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+
+  <body>
+    <div class="row bg-info p-2 mb-2">
+      <div class="row col-10 m-auto">
+        <%= link_to "DIARY", root_path, class: "btn btn-dark w-auto mx-1" %>
+        <%= link_to "BACK", :back, class: "btn btn-success w-auto mx-1" %>
+        <%= link_to "ORDERS", cargo_orders_path, class: "btn btn-success w-auto mx-1" %>
+        <%= link_to "CUSTOMERS", cargo_customers_path, class: "btn btn-success w-auto mx-1" %>
+        <%= link_to "CARRIERS", cargo_carriers_path, class: "btn btn-success w-auto mx-1" %>
+      </div>
+    </div>
+
+    <div class="col-11 m-auto">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%=key %> m-2" id="win-message">
+          <button class="btn btn-close float-end" id="btn-close"></button>
+          <%= value %>
+        </div>
+      <% end %>
+
+    <div id="conteiner"><%= yield %></div>
+    </div>
+  </body>
+</html>

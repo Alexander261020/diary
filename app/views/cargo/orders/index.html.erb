@@ -1,0 +1,10 @@
+<div class="row border-bottom">
+  <div class="col-3"><h2>Orders</h2></div>
+  <div class="col-3"><%= link_to "New order", new_cargo_order_path, class: "btn btn-success w-auto" %></div>
+</div>
+
+<div id="cargo_orders">
+  <% @cargo_orders.each do |cargo_order| %>
+    <%= render cargo_order %>
+  <% end %>
+</div>
