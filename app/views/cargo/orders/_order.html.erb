@@ -1,6 +1,8 @@
 <div id="<%= dom_id order %>">
-  <div class="border-bottom">
-    <%= link_to "Status: #{order.status}", cargo_order_path(order.id) %>
+  <div class="border-bottom text-<%= Cargo::Order::COLOR[order.status] %>">
+    <%= link_to "Status: #{order.status}", cargo_order_path(order.id),
+      class: "text-#{Cargo::Order::COLOR[order.status]}",
+      style: "text-decoration: none;" %>
   </div>
 
 </div>
