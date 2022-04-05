@@ -1,17 +1,20 @@
 <div id="<%= dom_id car %>">
-  <p>
-    <strong>Brand:</strong>
-    <%= car.brand %>
-  </p>
-
-  <p>
-    <strong>Reg mark:</strong>
-    <%= car.reg_mark %>
-  </p>
-
-  <p>
-    <strong>P mark:</strong>
-    <%= car.p_mark %>
-  </p>
-
+  <% if car.brand.present? %>
+    <div>
+      <strong>Brand:</strong>
+      <%= car.brand %>
+    </div>
+  <% end %>
+  <% if car.reg_mark.present? %>
+    <div>
+      <strong>Reg mark:</strong>
+      <%= car.reg_mark %>
+    </div>
+  <% end %>
+  <% if car.p_mark.present? %>
+    <div>
+      <strong>p mark:</strong>
+      <%= car.p_mark %>
+    </div>
+  <% end %>
 </div>

@@ -19,14 +19,14 @@
       </div>
     <% end %>
 
-    <% if carrier.ogrn.present? %>
+    <% if carrier.passport.present? %>
       <div>
         <strong>Passport:</strong>
         <%= carrier.passport %>
       </div>
     <% end %>
 
-    <% if carrier.ogrn.present? %>
+    <% if carrier.adress.present? %>
       <div>
         <strong>Adress:</strong>
         <%= carrier.adress %>
@@ -54,7 +54,7 @@
       <% end %>
     </div>
 
-    <div class="border-bottom">
+    <div class="border-bottom-right">
       <div>Drivers: <%= carrier.drivers.size %></div>
       <% carrier.drivers.each do |driver| %>
         <div>

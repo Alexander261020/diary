@@ -1,9 +1,12 @@
-<h4><%= @cargo_car.carrier.name %></h4>
+<h4><%= link_to @cargo_car.carrier.name, cargo_carrier_path(@cargo_car.carrier) %></h4>
+
 <%= render @cargo_car %>
 
 <div>
-  <%= link_to "Edit this car", edit_cargo_car_path(@cargo_car) %>
+  <%= link_to "Edit this car", edit_cargo_car_path(@cargo_car),
+    class: "btn btn-success my-2" %>
 
   <%= button_to "Destroy this car", @cargo_car, method: :delete,
+    class: "btn btn-danger",
     onclick: "return confirm('Are you sure?')" %>
 </div>

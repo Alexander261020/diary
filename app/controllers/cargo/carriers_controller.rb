@@ -25,17 +25,18 @@ class Cargo::CarriersController < ApplicationController
 
     if @cargo_carrier.save
       AddContact.(@cargo_carrier, params)
-      redirect_to @cargo_carrier, notice: "Carrier was successfully created."
+      flash[:success] = "Carrier was successfully created."
+      redirect_to @cargo_carrier
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /cargo/carriers/1
   def update
     if @cargo_carrier.update(cargo_carrier_params)
       AddContact.(@cargo_carrier, params)
-      redirect_to @cargo_carrier, notice: "Carrier was successfully updated."
+      flash[:success] = "Carrier was successfully updated."
+      redirect_to @cargo_carrier
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,7 +45,8 @@ class Cargo::CarriersController < ApplicationController
   # DELETE /cargo/carriers/1
   def destroy
     @cargo_carrier.destroy
-    redirect_to cargo_carriers_url, notice: "Carrier was successfully destroyed."
+    flash[:success] = "Carrier was successfully destroyed."
+    redirect_to cargo_carriers_url
   end
 
   private

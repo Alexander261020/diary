@@ -22,8 +22,8 @@ class Cargo::CarsController < ApplicationController
 
     if @cargo_car.save
       @carrier.cars.push(@cargo_car)
-
-      redirect_to @cargo_car, notice: "Car was successfully created."
+      flash[:success] = "Car was successfully created."
+      redirect_to @cargo_car
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,7 +32,8 @@ class Cargo::CarsController < ApplicationController
   # PATCH/PUT /cargo/cars/1
   def update
     if @cargo_car.update(cargo_car_params)
-      redirect_to @cargo_car, notice: "Car was successfully updated."
+      flash[:success] = "Car was successfully updated."
+      redirect_to @cargo_car
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,7 +42,8 @@ class Cargo::CarsController < ApplicationController
   # DELETE /cargo/cars/1
   def destroy
     @cargo_car.destroy
-    redirect_to cargo_carrier_path(@cargo_car.carrier), notice: "Car was successfully destroyed."
+    flash[:success] = "Car was successfully destroyed."
+    redirect_to cargo_carrier_path(@cargo_car.carrier)
   end
 
   private
