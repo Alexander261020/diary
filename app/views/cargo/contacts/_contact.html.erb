@@ -1,8 +1,22 @@
-<div id="<%= dom_id contact %>">
-  <% if contact.tel.present? %>
-    Tel: <%= contact.tel %>
-  <% end %>
-  <% if contact.email.present? %>
-    Tel: <%= contact.email %>
-  <% end %>
+<div class="row" id="<%= dom_id contact %>">
+  <div class="w-auto">
+    <% if contact.name_contact.present? %>
+      Name: <strong><%= contact.name_contact %></strong>
+    <% end %>
+    <% if contact.tel.present? %>
+      Tel: <strong><%= contact.tel %></strong>
+    <% end %>
+    <% if contact.email.present? %>
+      Email: <strong><%= contact.email %></strong>
+    <% end %>
+  </div>
+
+  <%= link_to "E", edit_cargo_contact_path(contact),
+    class: "border-0 bg-light w-auto p-0 text-dark" %>
+
+  <div class="w-auto">
+    <%= button_to "X", cargo_contact_path(contact), method: :delete,
+      onclick: "return confirm('Are you sure?')",
+      class: "border-0 bg-light p-0" %>
+  </div>
 </div>

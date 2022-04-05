@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_04_130617) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_05_100140) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_04_130617) do
     t.integer "carrier_id"
     t.integer "customer_id"
     t.integer "driver_id"
+    t.string "name_contact"
     t.index ["carrier_id"], name: "index_cargo_contacts_on_carrier_id"
     t.index ["customer_id"], name: "index_cargo_contacts_on_customer_id"
     t.index ["driver_id"], name: "index_cargo_contacts_on_driver_id"

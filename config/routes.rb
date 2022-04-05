@@ -20,7 +20,6 @@ Rails.application.routes.draw do
     get "/carrier/:id/cars/new", to: "cars#new", as: "new_car"
     resources :drivers, except: [:new, :index]
     get "/carrier/:id/drivers/new", to: "drivers#new", as: "new_driver"
-    # resources :contacts, only: []
-    # get "/contact/:id/drivers/new", to: "drivers#new", as: "new_driver"
+    resources :contacts, only: [:destroy, :edit, :update]
   end
 end
