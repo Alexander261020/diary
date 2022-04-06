@@ -23,38 +23,38 @@ class Cargo::OrdersController < ApplicationController
 
   # POST /cargo/orders
   def create
-    @cargo_order = Cargo::Order.new(cargo_order_params)
+    @cargo_order = Cargo::Order.new
 
     if @cargo_order.save
-      redirect_to @cargo_order, notice: "Order was successfully created."
+      flash[:success] = "Order was successfully created."
+      redirect_to cargo_orders_path
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /cargo/orders/1
   def update
     if @cargo_order.update(cargo_order_params)
-      redirect_to @cargo_order, notice: "Order was successfully updated."
+      flash[:success] = "Order was successfully updated."
+      redirect_to cargo_orders_path
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /cargo/orders/1
   def destroy
     @cargo_order.destroy
-    redirect_to cargo_orders_url, notice: "Order was successfully destroyed."
+    flash[:success] = "Order was successfully destroyed."
+    redirect_to cargo_orders_url
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cargo_order
-      @cargo_order = Cargo::Order.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def cargo_order_params
-      params.require(:cargo_order).permit(:status)
-    end
+  def set_cargo_order
+    @cargo_order = Cargo::Order.find(params[:id])
+  end
+
+  def cargo_order_params
+    params.require(:cargo_order).permit(:status)
+  end
 end

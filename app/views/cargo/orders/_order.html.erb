@@ -1,8 +1,13 @@
 <div id="<%= dom_id order %>">
   <div class="border-bottom text-<%= Cargo::Order::COLOR[order.status] %>">
-    <%= link_to "Status: #{order.status}", cargo_order_path(order.id),
+    <%= link_to "Status:", cargo_order_path(order.id),
       class: "text-#{Cargo::Order::COLOR[order.status]}",
       style: "text-decoration: none;" %>
+    <div class="d-inline-block">
+      <%= form_with(model: order) do |form| %>
+        <%= form.select(:status, options_for_select([1,2,3,4,5],order.status)) %>
+        <%= form.submit "e", class: "btn btn-#{Cargo::Order::COLOR[order.status]} px-2 py-0" %>
+      <% end %>
+    </div>
   </div>
-
 </div>

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :tasks
 
   get 'ajax/show'
+  get 'ajax/customers_show'
 
   namespace :cargo do
     resources :carriers

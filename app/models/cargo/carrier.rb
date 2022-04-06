@@ -3,5 +3,6 @@ class Cargo::Carrier < ApplicationRecord
 
   has_many :cars, dependent: :destroy
   has_many :drivers, dependent: :destroy
-  has_many :contacts
+  has_many :contacts, dependent: :destroy
+  has_many :orders
 end

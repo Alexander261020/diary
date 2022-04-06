@@ -1,4 +1,11 @@
 class AjaxController < ApplicationController
+
+  def customers_show
+    @search_customers = params[:search_customers]
+    @customers = []
+    @customers = Cargo::Customer.where("name LIKE '%#{@search_customers}%'") if @search_customers.present?
+  end
+
   def show
     @search = params[:search].downcase
 
