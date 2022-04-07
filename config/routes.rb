@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get 'ajax/show'
   get 'ajax/customers_show'
+  get 'ajax/carriers_show'
 
   namespace :cargo do
     resources :carriers

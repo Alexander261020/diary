@@ -1,11 +1,27 @@
 <div id="<%= dom_id order %>">
   <div class="row border-bottom text-<%= Cargo::Order::COLOR[order.status] %>">
+
   <% if order.customer.present? %>
     <div class="col-4 border border-dark">
-      <%= link_to "#{order.customer.name}: #{order.customer.contacts.first.tel}",
+      <%= link_to order.customer.name,
         cargo_customer_path(order.customer),
         class: "text-#{Cargo::Order::COLOR[order.status]}",
         style: "text-decoration: none;" %>
+    <% unless order.customer.contacts.first.nil? %>
+      :<%= order.customer.contacts.first.tel %>
+    <% end %>
+    </div>
+  <% end %>
+
+  <% if order.carrier.present? %>
+    <div class="col-4 border border-dark">
+      <%= link_to order.carrier.name,
+        cargo_carrier_path(order.carrier),
+        class: "text-#{Cargo::Order::COLOR[order.status]}",
+        style: "text-decoration: none;" %>
+      <% unless order.carrier.contacts.first.nil? %>
+        :<%= order.carrier.contacts.first.tel %>
+      <% end %>
     </div>
   <% end %>
 

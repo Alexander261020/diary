@@ -25,6 +25,11 @@ class Cargo::OrdersController < ApplicationController
   def create
     @cargo_order = Cargo::Order.new
 
+    carrier = Cargo::Carrier.find_by(name: params[:carrier_id]);
+    customer = Cargo::Customer.find_by(name: params[:customer_id]);
+    @cargo_order.customer = customer if customer.present?
+    @cargo_order.carrier = carrier if carrier.present?
+
     if @cargo_order.save
       flash[:success] = "Order was successfully created."
       redirect_to cargo_orders_path
@@ -34,10 +39,14 @@ class Cargo::OrdersController < ApplicationController
   end
 
   def update
+
+    carrier = Cargo::Carrier.find_by(name: params[:carrier_id]);
     customer = Cargo::Customer.find_by(name: params[:customer_id]);
     @cargo_order.customer = customer if customer.present?
+    @cargo_order.carrier = carrier if carrier.present?
+
     if @cargo_order.update(cargo_order_params)
-      flash[:success] = "Order was successfully updated."
+      # flash[:success] = "Order was successfully updated."
       redirect_to cargo_orders_path
     else
       render :edit, status: :unprocessable_entity

@@ -1,0 +1,5 @@
+<% @customers.each do |carrier| %>
+  <div class="class-carrier px-2 border-bottom" style="cursor: pointer;" id_carrier="<%= carrier.id %>">
+    <%= carrier.name %>
+  </div>
+<% end %>
