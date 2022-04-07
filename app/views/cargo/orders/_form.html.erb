@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= form.hidden_field :status %>
+
   <div class="position-relative">
     <%= text_field_tag 'customer_id', nil %>
     <div class="position-absolute border border-dark bg-light p-1" id="customers_show"

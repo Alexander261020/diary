@@ -34,6 +34,8 @@ class Cargo::OrdersController < ApplicationController
   end
 
   def update
+    customer = Cargo::Customer.find_by(name: params[:customer_id]);
+    @cargo_order.customer = customer if customer.present?
     if @cargo_order.update(cargo_order_params)
       flash[:success] = "Order was successfully updated."
       redirect_to cargo_orders_path

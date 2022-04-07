@@ -1,9 +1,21 @@
 <div id="<%= dom_id order %>">
-  <div class="border-bottom text-<%= Cargo::Order::COLOR[order.status] %>">
-    <%= link_to "Status:", cargo_order_path(order.id),
-      class: "text-#{Cargo::Order::COLOR[order.status]}",
-      style: "text-decoration: none;" %>
-    <div class="d-inline-block">
+  <div class="row border-bottom text-<%= Cargo::Order::COLOR[order.status] %>">
+  <% if order.customer.present? %>
+    <div class="col-4 border border-dark">
+      <%= link_to "#{order.customer.name}: #{order.customer.contacts.first.tel}",
+        cargo_customer_path(order.customer),
+        class: "text-#{Cargo::Order::COLOR[order.status]}",
+        style: "text-decoration: none;" %>
+    </div>
+  <% end %>
+
+    <div class="col-1 border border-dark">
+      <%= link_to "Status:", cargo_order_path(order.id),
+        class: "text-#{Cargo::Order::COLOR[order.status]}",
+        style: "text-decoration: none;" %>
+    </div>
+
+    <div class="col-1 border border-dark">
       <%= form_with(model: order) do |form| %>
         <%= form.select(:status, options_for_select([1,2,3,4,5],order.status)) %>
         <%= form.submit "e", class: "btn btn-#{Cargo::Order::COLOR[order.status]} px-2 py-0" %>

@@ -20,7 +20,7 @@ if (document.getElementById('customer_id') !== null) {
         class_customers = document.getElementsByClassName('class-customer');
         for (var i=0; i < class_customers.length; i++) {
           class_customers[i].addEventListener('click', function () {
-            pick_customer(this.getAttribute('id_customer'))
+            pick_customer(this.getAttribute('id_customer'), this.innerHTML)
           });
         };
       }
@@ -28,6 +28,10 @@ if (document.getElementById('customer_id') !== null) {
   });
 }
 
-function pick_customer(id){
-  console.log(id)
+function pick_customer(id, value){
+  search_customer = document.getElementById('customer_id');
+  search_customer.value = value.trim()
+  customers_show = document.getElementById('customers_show');
+  customers_show.style.display = "none";
+  console.log(id,value)
 }
