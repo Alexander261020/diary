@@ -26,5 +26,7 @@ Rails.application.routes.draw do
     get "/carrier/:id/drivers/new", to: "drivers#new", as: "new_driver"
     resources :contacts, only: [:destroy, :edit, :update]
     resources :orders
+    get "/towns/parsing", to: "towns#parsing", as: "parsing_towns"
+    resources :towns
   end
 end

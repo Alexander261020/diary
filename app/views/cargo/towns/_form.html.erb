@@ -1,0 +1,27 @@
+<%= form_with(model: cargo_town) do |form| %>
+  <% if cargo_town.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(cargo_town.errors.count, "error") %> prohibited this cargo_town from being saved:</h2>
+
+      <ul>
+        <% cargo_town.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :region, style: "display: block" %>
+    <%= form.text_field :region %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

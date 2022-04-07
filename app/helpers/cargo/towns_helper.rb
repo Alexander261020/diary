@@ -1,0 +1,2 @@
+module Cargo::TownsHelper
+end
