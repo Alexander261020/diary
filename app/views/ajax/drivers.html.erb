@@ -1,0 +1,8 @@
+<div class="drivers" id="drivers">
+  <% @drivers.each do |driver| %>
+    <div class="drivers-class border-bottom border-dark" id_driver="<%= driver.id %>"
+      style="background: grey; cursor: pointer;">
+      <%= driver.name %>
+    </div>
+  <% end %>
+</div>

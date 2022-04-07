@@ -1,0 +1,10 @@
+<div class="cars" id="cars">
+  <% @cars.each do |car| %>
+    <div class="cars-class border-bottom border-dark" id_car="<%= car.id %>"
+      style="background: grey; cursor: pointer;">
+      <% if car.brand.present? %><%= car.brand %><% end %>
+      <% if car.reg_mark.present? %><strong><%= car.reg_mark %></strong><% end %>
+      <% if car.p_mark.present? %><%= car.p_mark %><% end %>
+    </div>
+  <% end %>
+</div>

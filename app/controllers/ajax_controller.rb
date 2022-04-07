@@ -12,6 +12,14 @@ class AjaxController < ApplicationController
     @customers = Cargo::Carrier.where("name LIKE '%#{@search_carriers}%'") if @search_carriers.present?
   end
 
+  def cars
+    @cars = Cargo::Carrier.find(params[:id_carrier]).cars
+  end
+
+  def drivers
+    @drivers = Cargo::Carrier.find(params[:id_carrier]).drivers
+  end
+
   def show
     @search = params[:search].downcase
 

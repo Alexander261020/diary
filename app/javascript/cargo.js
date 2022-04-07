@@ -65,10 +65,66 @@ if (document.getElementById('carrier_id') !== null) {
     });
   });
 }
+
+
 function pick_carrier(id, value){
   search_carrier = document.getElementById('carrier_id');
   search_carrier.value = value.trim()
   carriers_show = document.getElementById('carriers_show');
   carriers_show.style.display = "none";
-  console.log(id,value)
+
+  //берем машины перевозчика
+  $.ajax({
+    type:"get",
+    url: 'http://'+ document.location.host + '/ajax/cars',
+    data:{'id_carrier' :id},
+    cache:false,
+    success:function(data){
+      car_show = document.getElementById('car_show');
+      car_show.innerHTML = data
+      cars_class = document.getElementsByClassName('cars-class');
+      for (var i=0; i < cars_class.length; i++) {
+        cars_class[i].addEventListener('click', function () {
+          pick_car(this.getAttribute('id_car'), this.innerHTML)
+        });
+      };
+    }
+  });
+
+  //берем водителей перевозчика
+  $.ajax({
+    type:"get",
+    url: 'http://'+ document.location.host + '/ajax/drivers',
+    data:{'id_carrier' :id},
+    cache:false,
+    success:function(data){
+
+      driver_show = document.getElementById('driver_show');
+      driver_show.innerHTML = data
+      drivers_class = document.getElementsByClassName('drivers-class');
+      for (var i=0; i < drivers_class.length; i++) {
+        drivers_class[i].addEventListener('click', function () {
+          pick_driver(this.getAttribute('id_driver'), this.innerHTML)
+        });
+      };
+
+    }
+  });
+
+  cars_drivers = document.getElementById('cars_drivers');
+  cars_drivers.style.display = "block";
+}
+
+function pick_car(id, value){
+  cars = document.getElementById('cars');
+  cars.innerHTML = value.trim()
+  car_id = document.getElementById('car_id');
+  car_id.value = id
+}
+
+function pick_driver(id, value){
+  drivers = document.getElementById('drivers');
+  drivers.innerHTML = value.trim()
+  driver_id = document.getElementById('driver_id');
+  driver_id.value = id
 }
