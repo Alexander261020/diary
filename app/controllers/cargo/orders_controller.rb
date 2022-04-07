@@ -24,16 +24,7 @@ class Cargo::OrdersController < ApplicationController
   # POST /cargo/orders
   def create
     @cargo_order = Cargo::Order.new
-
-    car = Cargo::Car.find_by(name: params[:car_id]);
-    driver = Cargo::Driver.find_by(name: params[:driver_id]);
-    carrier = Cargo::Carrier.find_by(name: params[:carrier_id]);
-    customer = Cargo::Customer.find_by(name: params[:customer_id]);
-
-    @cargo_order.car = car if car.present?
-    @cargo_order.driver = driver if driver.present?
-    @cargo_order.customer = customer if customer.present?
-    @cargo_order.carrier = carrier if carrier.present?
+    AddReference.(@cargo_order, params)
 
     if @cargo_order.save
       flash[:success] = "Order was successfully created."
@@ -44,15 +35,7 @@ class Cargo::OrdersController < ApplicationController
   end
 
   def update
-    car = Cargo::Car.find(params[:car_id]);
-    driver = Cargo::Driver.find(params[:driver_id]);
-    carrier = Cargo::Carrier.find_by(name: params[:carrier_id]);
-    customer = Cargo::Customer.find_by(name: params[:customer_id]);
-
-    @cargo_order.car = car if car.present?
-    @cargo_order.driver = driver if driver.present?
-    @cargo_order.customer = customer if customer.present?
-    @cargo_order.carrier = carrier if carrier.present?
+    AddReference.(@cargo_order, params)
 
     if @cargo_order.update(cargo_order_params)
       redirect_to cargo_orders_path

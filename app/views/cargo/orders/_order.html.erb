@@ -1,40 +1,54 @@
 <div id="<%= dom_id order %>">
-  <div class="row border-bottom text-<%= Cargo::Order::COLOR[order.status] %>">
+  <div class="row border-bottom text-<%= Cargo::Order::COLOR[order.status] %>" style="height: 25px;">
 
   <% if order.customer.present? %>
-    <div class="col-4 border border-dark">
-      <%= link_to order.customer.name,
-        cargo_customer_path(order.customer),
-        class: "text-#{Cargo::Order::COLOR[order.status]}",
-        style: "text-decoration: none;" %>
-    <% unless order.customer.contacts.first.nil? %>
-      :<%= order.customer.contacts.first.tel %>
-    <% end %>
+    <div class="col-4">
+      <div class=" d-inline-block m-0"><%=order.id%>|</div>
+        <div class=" d-inline-block m-0">
+          <div class=" d-inline-block m-0">
+            <%= link_to order.customer.name,
+              cargo_customer_path(order.customer),
+              class: "text-#{Cargo::Order::COLOR[order.status]} overflow-hidden",
+              style: "text-decoration: none;" %>
+          </div>
+          <% unless order.customer.contacts.first.nil? %>
+            :<%= order.customer.contacts.first.tel %>
+          <% end %>
+        </div>
     </div>
   <% end %>
 
   <% if order.carrier.present? %>
-    <div class="col-4 border border-dark">
-      <%= link_to order.carrier.name,
-        cargo_carrier_path(order.carrier),
-        class: "text-#{Cargo::Order::COLOR[order.status]}",
-        style: "text-decoration: none;" %>
-      <% unless order.carrier.contacts.first.nil? %>
-        :<%= order.carrier.contacts.first.tel %>
-      <% end %>
+    <div class="col-4 ">
+      <div class=" d-inline-block m-0 p-0"
+        style="width: 100%; overflow: hidden; white-space: nowrap; height: 25px;">
+        <div class=" d-inline-block m-0"
+          style="max-width: 250px; overflow: hidden; m-0">
+          <%= link_to order.carrier.name,
+            cargo_carrier_path(order.carrier),
+            class: "text-#{Cargo::Order::COLOR[order.status]}",
+            style: "text-decoration: none;" %>
+        </div>
+        <div class=" d-inline-block ml-1" style="vertical-align: top;">
+          <% unless order.carrier.contacts.first.nil? %>
+            :<%= order.carrier.contacts.first.tel %>
+          <% end %>
+        </div>
+      </div>
     </div>
   <% end %>
 
-    <div class="col-1 border border-dark">
+    <div class="col-1 ">
       <%= link_to "Status:", cargo_order_path(order.id),
         class: "text-#{Cargo::Order::COLOR[order.status]}",
         style: "text-decoration: none;" %>
     </div>
 
-    <div class="col-1 border border-dark">
+    <div class="col-1 ">
       <%= form_with(model: order) do |form| %>
         <%= form.select(:status, options_for_select([1,2,3,4,5],order.status)) %>
-        <%= form.submit "e", class: "btn btn-#{Cargo::Order::COLOR[order.status]} px-2 py-0" %>
+        <%= form.submit "e", class: "btn btn-#{Cargo::Order::COLOR[order.status]} px-2 py-0 m-0",
+          style: "height: 24px; vertical-align: top;" %>
       <% end %>
     </div>
   </div>
