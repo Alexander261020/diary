@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_07_130743) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_09_084100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -89,10 +89,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_07_130743) do
     t.integer "customer_id"
     t.integer "car_id"
     t.integer "driver_id"
+    t.integer "town_from_id"
+    t.integer "town_in_id"
     t.index ["car_id"], name: "index_cargo_orders_on_car_id"
     t.index ["carrier_id"], name: "index_cargo_orders_on_carrier_id"
     t.index ["customer_id"], name: "index_cargo_orders_on_customer_id"
     t.index ["driver_id"], name: "index_cargo_orders_on_driver_id"
+    t.index ["town_from_id"], name: "index_cargo_orders_on_town_from_id"
+    t.index ["town_in_id"], name: "index_cargo_orders_on_town_in_id"
   end
 
   create_table "cargo_towns", force: :cascade do |t|

@@ -5,7 +5,7 @@ class Cargo::OrdersController < ApplicationController
 
   # GET /cargo/orders
   def index
-    @cargo_orders = Cargo::Order.all
+    @cargo_orders = Cargo::Order.order(id: :desc)
   end
 
   # GET /cargo/orders/1
