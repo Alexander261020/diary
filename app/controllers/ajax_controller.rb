@@ -20,6 +20,18 @@ class AjaxController < ApplicationController
     @drivers = Cargo::Carrier.find(params[:id_carrier]).drivers
   end
 
+  def towns_from
+    @search_towns = params[:search_towns]
+    @towns = []
+    @towns = Cargo::Town.where("title LIKE '%#{@search_towns}%'") if @search_towns.present?
+  end
+
+  def towns_in
+    @search_towns = params[:search_towns]
+    @towns = []
+    @towns = Cargo::Town.where("title LIKE '%#{@search_towns}%'") if @search_towns.present?
+  end
+
   def show
     @search = params[:search].downcase
 

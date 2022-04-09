@@ -128,3 +128,89 @@ function pick_driver(id, value){
   driver_id = document.getElementById('driver_id');
   driver_id.value = id
 }
+
+
+// for town from
+//////////////////////////////////////////////////// town_from_id
+if (document.getElementById('town_from_id') !== null) {
+  search_towns_from = document.getElementById('town_from_id');
+  town_from_show = document.getElementById('town_from_show');
+  search_towns_from.addEventListener('keyup', function () {
+    console.log(search_towns_from.value);
+    if (search_towns_from.value == '') {
+      town_from_show.style.display = 'none';
+    } else {
+      town_from_show.style.display = 'block';
+    }
+    console.log('http://'+ document.location.host + '/ajax/towns_from');
+    $.ajax({
+      type:"get",
+      url: 'http://'+ document.location.host + '/ajax/towns_from',
+      data:{'search_towns' :search_towns_from.value},
+      cache:false,
+      success:function(data){
+        town_from_show.innerHTML = data;
+        console.log(search_towns_from.value)
+        class_from_towns = document.getElementsByClassName('towns-from-class');
+        console.log(class_from_towns.lenght)
+        for (var i=0; i < class_from_towns.length; i++) {
+          class_from_towns[i].addEventListener('click', function () {
+            pick_town_from(this.getAttribute('id_town'), this.innerHTML)
+          });
+        };
+      }
+    });
+  });
+}
+
+function pick_town_from(id, value){
+  town_from_id = document.getElementById('town_from_id');
+  town_from_id.value = value.trim()
+  town_from_id_h = document.getElementById('town_from_id_h');
+  town_from_id_h.value = id
+  town_from_show = document.getElementById('town_from_show');
+  town_from_show.style.display = "none";
+}
+
+
+// for town in
+//////////////////////////////////////////////////// town_in_id
+if (document.getElementById('town_in_id') !== null) {
+  search_towns = document.getElementById('town_in_id');
+  town_in_show = document.getElementById('town_in_show');
+  search_towns.addEventListener('keyup', function () {
+
+    console.log(search_towns.value);
+    if (search_towns.value == '') {
+      town_in_show.style.display = 'none';
+    } else {
+      town_in_show.style.display = 'block';
+    }
+    console.log('http://'+ document.location.host + '/ajax/towns_in');
+    $.ajax({
+      type:"get",
+      url: 'http://'+ document.location.host + '/ajax/towns_in',
+      data:{'search_towns' :search_towns.value},
+      cache:false,
+      success:function(data){
+        town_in_show.innerHTML = data;
+
+        class_in_towns = document.getElementsByClassName('towns-in-class');
+        for (var i=0; i < class_in_towns.length; i++) {
+          class_in_towns[i].addEventListener('click', function () {
+            pick_town_in(this.getAttribute('id_town'), this.innerHTML)
+          });
+        };
+      }
+    });
+  });
+}
+
+function pick_town_in(id, value){
+  town_in_id = document.getElementById('town_in_id');
+  town_in_id.value = value.trim()
+  town_in_id_h = document.getElementById('town_in_id_h');
+  town_in_id_h.value = id
+  town_in_show = document.getElementById('town_in_show');
+  town_in_show.style.display = "none";
+}

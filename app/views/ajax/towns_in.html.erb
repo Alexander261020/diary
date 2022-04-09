@@ -1,0 +1,6 @@
+<% @towns.each do |town| %>
+  <div class="towns-in-class border-bottom border-dark" id_town ="<%= town.id %>"
+    style="background: grey; cursor: pointer;">
+    <%= town.title %><% unless town.region == "" %> - <%= town.region %><% end %>
+  </div>
+<% end %>

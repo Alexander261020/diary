@@ -80,6 +80,6 @@ class Cargo::TownsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def cargo_town_params
-    params.require(:cargo_town).permit(:name, :region)
+    params.require(:cargo_town).permit(:title, :region)
   end
 end

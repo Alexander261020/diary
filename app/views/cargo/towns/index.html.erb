@@ -3,14 +3,10 @@
 <h1>Towns</h1>
 <%= link_to "Parsing wiki", cargo_parsing_towns_path, class: "btn btn-success w-auto m-1",
   onclick: "return confirm('Are you sure? PARSING?')" %>
+<%= link_to "New town", new_cargo_town_path,  class: "btn btn-success w-auto m-1" %>
 
 <div id="cargo_towns">
   <% @cargo_towns.each do |cargo_town| %>
     <%= render cargo_town %>
-    <p>
-      <%= link_to "Show this town", cargo_town %>
-    </p>
   <% end %>
 </div>
-
-<!--%= link_to "New town", new_cargo_town_path,  class: "btn btn-success w-auto m-1" % -->

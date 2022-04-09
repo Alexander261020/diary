@@ -1,12 +1,7 @@
 <div id="<%= dom_id town %>">
-  <p>
-    <strong>Name:</strong>
-    <%= town.title %>
-  </p>
-
-  <p>
-    <strong>Region:</strong>
-    <%= town.region %>
-  </p>
-
+  <%= town.id %>:
+  <strong><%= town.title %></strong>
+  Region:
+  <strong><%= town.region %></strong>
+  <%= link_to "Show this town", town %>
 </div>
