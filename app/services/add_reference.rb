@@ -15,5 +15,11 @@ class AddReference
     order.carrier = carrier if carrier.present?
     order.town_from = town_from if town_from.present?
     order.town_in = town_in if town_in.present?
+
+    if params[:payment_id].present?
+      Cargo::Payment.update(sum: params[:sum], sin: params[:sin]) if params[:sum].present?
+    else
+      Cargo::Payment.create(sum: params[:sum], sin: params[:sin], order: order) if params[:sum].present?
+    end
   end
 end

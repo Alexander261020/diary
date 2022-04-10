@@ -49,6 +49,14 @@
     <% end %>
 
     <div class="col-1">
+      <%= order.payment.present? ? order.payment.sum : "sum" %>
+    </div>
+
+    <div class="col-1">
+      <%= order.payment.present? ? order.payment.sin : "sin" %>
+    </div>
+
+    <div class="col-1">
       <div class="d-inline-block">
         <%= link_to "S", cargo_order_path(order.id),
           class: "text-#{Cargo::Order::COLOR[order.status]}",

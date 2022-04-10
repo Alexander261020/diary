@@ -30,7 +30,7 @@
 
     <div class="position-relative col-2 p-0">
       <%= cargo_order_carrier_exist(cargo_order) %>
-      <div class="position-absolute border border-dark bg-light p-1  w-100" id="carriers_show"
+      <div class="position-absolute border border-dark bg-light p-1 w-100" id="carriers_show"
         style="display: none; z-index: 1;">
       </div>
 
@@ -39,6 +39,10 @@
         <%= cargo_order_car_exist(cargo_order) %>
         <%= cargo_order_driver_exist(cargo_order) %>
       </div>
+    </div>
+
+    <div class="position-relative col-2 p-0">
+      <%= cargo_order_payment_exist(cargo_order) %>
     </div>
   </div>
   <div>
