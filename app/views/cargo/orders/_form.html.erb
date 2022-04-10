@@ -14,41 +14,31 @@
   <%= form.hidden_field :status %>
   <div class="row" style="min-height: 200px;">
     <div class="position-relative col-2 p-0">
-      <%= text_field_tag 'customer_id', nil, placeholder: "customer" %>
-      <div class="position-absolute bg-light p-1" id="customers_show"
-        style="display: none;"></div>
+      <%= cargo_order_customer_exist(cargo_order) %>
+      <div class="position-absolute bg-light p-1" id="customers_show" style="display: none;"></div>
     </div>
 
     <div class="position-relative col-2 p-0">
-      <%= text_field_tag 'town_from_id', nil, placeholder: "town from" %>
-      <div class="position-absolute border border-dark bg-light p-1 w-100",
-        id="town_from_show",
-        style="display: none;"></div>
-      <%= hidden_field_tag 'town_from_id_h', nil %>
+      <%= cargo_order_town_from_exist(cargo_order) %>
+      <div class="position-absolute border border-dark bg-light p-1 w-100" id="town_from_show" style="display: none;"></div>
     </div>
 
     <div class="position-relative col-2 p-0">
-      <%= text_field_tag 'town_in_id', nil, placeholder: "town in" %>
-      <div class="position-absolute border border-dark bg-light p-1 w-100",
-        id="town_in_show",
-        style="display: none;"></div>
-      <%= hidden_field_tag 'town_in_id_h', nil %>
+      <%= cargo_order_town_in_exist(cargo_order) %>
+      <div class="position-absolute border border-dark bg-light p-1 w-100" id="town_in_show" style="display: none;"></div>
     </div>
 
     <div class="position-relative col-2 p-0">
-      <%= text_field_tag 'carrier_id', nil, placeholder: "carrier" %>
+      <%= cargo_order_carrier_exist(cargo_order) %>
       <div class="position-absolute border border-dark bg-light p-1  w-100" id="carriers_show"
         style="display: none; z-index: 1;">
       </div>
 
-      <div class="position-absolute" id="cars_drivers" style="display: none;">
-        <div class="position-relative border border-dark bg-light p-1" id="car_show"></div>
-        <%= hidden_field_tag 'car_id', nil %>
-
-        <div class="position-relative border border-dark bg-light p-1 pull-right" id="driver_show"></div>
-        <%= hidden_field_tag 'driver_id', nil %>
+      <div class="position-absolute" id="cars_drivers"
+        style="display: <%= cargo_order.car.present? ? "block" : "none" %>;">
+        <%= cargo_order_car_exist(cargo_order) %>
+        <%= cargo_order_driver_exist(cargo_order) %>
       </div>
-
     </div>
   </div>
   <div>
