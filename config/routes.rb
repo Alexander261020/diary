@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :drivers, except: [:new, :index]
     get "/carrier/:id/drivers/new", to: "drivers#new", as: "new_driver"
     resources :contacts, only: [:destroy, :edit, :update]
+    get "/orders/arhive", to: "orders#arhive", as: "arhive"
     resources :orders
     get "/towns/parsing", to: "towns#parsing", as: "parsing_towns"
     resources :towns

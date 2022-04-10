@@ -1,6 +1,8 @@
-<div class="row border-bottom">
-  <div class="col-3"><h2>Orders</h2></div>
-  <div class="col-3"><%= link_to "New order", new_cargo_order_path, class: "btn btn-success w-auto" %></div>
+<div class="row border-bottom pb-2">
+  <div class="col-2"><h4>Orders</h4></div>
+
+  <%= link_to "Arhive", cargo_arhive_path, class: "btn btn-success w-auto mx-2" %>
+  <%= link_to "New order", new_cargo_order_path, class: "btn btn-success w-auto" %>
 </div>
 
 <div id="cargo_orders">

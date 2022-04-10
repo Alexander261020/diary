@@ -1,11 +1,15 @@
 class Cargo::OrdersController < ApplicationController
   layout "cargo"
 
-  before_action :set_cargo_order, only: %i[ show edit update destroy ]
+  before_action :set_cargo_order, only: [:show, :edit, :update, :destroy]
 
-  # GET /cargo/orders
   def index
-    @cargo_orders = Cargo::Order.order(id: :desc)
+    @cargo_orders = Cargo::Order.where('status < 3').order(id: :desc)
+  end
+
+  def arhive
+    @cargo_orders = Cargo::Order.where('status > 2').order(id: :desc)
+    render "index"
   end
 
   # GET /cargo/orders/1

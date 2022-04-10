@@ -1,51 +1,52 @@
 <div id="<%= dom_id order %>">
-  <div class="row border-bottom border-dark text-<%= Cargo::Order::COLOR[order.status] %>" style="height: 25px;">
+  <div class="row border-bottom border-dark text-<%= Cargo::Order::COLOR[order.status] %>"
+    style="height: 25px;">
 
-  <% if order.customer.present? %>
-    <div class="col-3">
-      <div class=" d-inline-block m-0"><%=order.id%>|</div>
-        <div class=" d-inline-block m-0">
+    <% if order.customer.present? %>
+      <div class="col-3">
+        <div class="d-inline-block m-0" style="vertical-align: top;"><%=order.id%>|</div>
+        <div class="d-inline-block m-0" style="overflow: hidden; white-space: nowrap; width: 90%;">
           <% unless order.customer.contacts.first.nil? %>
             <%= order.customer.contacts.first.tel %>:
           <% end %>
-          <div class=" d-inline-block m-0">
+          <div class="d-inline-block m-0">
             <%= link_to order.customer.name,
               cargo_customer_path(order.customer),
-              class: "text-#{Cargo::Order::COLOR[order.status]} overflow-hidden",
+              class: "text-#{Cargo::Order::COLOR[order.status]}",
               style: "text-decoration: none;" %>
           </div>
         </div>
+      </div>
+    <% end %>
+
+    <div class="col-2" style="overflow: hidden; white-space: nowrap;">
+      <% if order.town_from.present? %>
+        <%= order.town_from.title %>
+      <% end %>
+      -
+      <% if order.town_in.present? %>
+        <%= order.town_in.title %>
+      <% end %>
     </div>
-  <% end %>
 
-  <div class="col-2" style="overflow: hidden; white-space: nowrap;">
-    <% if order.town_from.present? %>
-      <%= order.town_from.title %>
-    <% end %>
-    -
-    <% if order.town_in.present? %>
-      <%= order.town_in.title %>
-    <% end %>
-  </div>
-
-  <% if order.carrier.present? %>
-    <div class="col-3">
-      <div class=" d-inline-block m-0 p-0" style="width: 100%; overflow: hidden; white-space: nowrap; height: 25px;">
-        <div class=" d-inline-block ml-1" style="vertical-align: top;">
-          <% unless order.carrier.contacts.first.nil? %>
-            <%= order.carrier.contacts.first.tel %>:
-          <% end %>
-        </div>
-        <div class=" d-inline-block m-0"
-          style="max-width: 250px; overflow: hidden; m-0">
-          <%= link_to order.carrier.name,
-            cargo_carrier_path(order.carrier),
-            class: "text-#{Cargo::Order::COLOR[order.status]}",
-            style: "text-decoration: none;" %>
+    <% if order.carrier.present? %>
+      <div class="col-3">
+        <div class=" d-inline-block m-0 p-0" style="width: 100%; overflow: hidden; white-space: nowrap; height: 25px;">
+          <div class=" d-inline-block ml-1" style="vertical-align: top;">
+            <% unless order.carrier.contacts.first.nil? %>
+              <%= order.carrier.contacts.first.tel %>:
+            <% end %>
+          </div>
+          <div class=" d-inline-block m-0"
+            style="max-width: 250px; overflow: hidden; m-0">
+            <%= link_to order.carrier.name,
+              cargo_carrier_path(order.carrier),
+              class: "text-#{Cargo::Order::COLOR[order.status]}",
+              style: "text-decoration: none;" %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 
     <div class="col-1">
       <div class="d-inline-block">
