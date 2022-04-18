@@ -32,6 +32,7 @@ class AjaxController < ApplicationController
     @towns = Cargo::Town.where("title LIKE '%#{@search_towns}%'") if @search_towns.present?
   end
 
+  # общий поиск по сайту (не гурзоперевозки)
   def show
     @search = params[:search].downcase
 

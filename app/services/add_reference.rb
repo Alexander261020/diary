@@ -17,7 +17,8 @@ class AddReference
     order.town_in = town_in if town_in.present?
 
     if params[:payment_id].present?
-      Cargo::Payment.update(sum: params[:sum], sin: params[:sin]) if params[:sum].present?
+      payment = Cargo::Payment.find params[:payment_id]
+      payment.update(sum: params[:sum], sin: params[:sin]) if params[:sum].present?
     else
       Cargo::Payment.create(sum: params[:sum], sin: params[:sin], order: order) if params[:sum].present?
     end

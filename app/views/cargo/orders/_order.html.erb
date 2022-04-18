@@ -1,6 +1,6 @@
 <div id="<%= dom_id order %>">
   <div class="row border-bottom border-dark text-<%= Cargo::Order::COLOR[order.status] %>"
-    style="height: 25px;">
+    style="height: 30px;">
 
     <% if order.customer.present? %>
       <div class="col-3">
@@ -69,6 +69,9 @@
             style: "height: 24px; vertical-align: top;" %>
         <% end %>
       </div>
+    </div>
+    <div class="col-1">
+      <%= order.created_at.strftime("%d-%m-%Y")  %>
     </div>
   </div>
 </div>

@@ -12,6 +12,8 @@
 <% end %>
 
 <% unless @blocks.nil? %>
+<!--%= link_to (render partial: 'blocks/block', collection: @blocks), root_path %-->
+<!-- %= link_to (content_tag :div, (render partial: 'blocks/block', collection: @blocks), class: "row"), root_path % -->
   <div class="row">
     <%= render partial: 'blocks/block', collection: @blocks %>
   </div>

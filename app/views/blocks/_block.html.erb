@@ -10,8 +10,8 @@
       <% if item.include?("#=>") %>
         <% array_str = item.split("#=>") %>
         <%= array_str.first %> &nbsp;&nbsp; <span class="text-success">#=> <%= array_str.last %></span><br>
-      <% elsif item.include?("#") %>
-        <% array_str = item.split("#") %>
+      <% elsif item.include?("# ") %>
+        <% array_str = item.split("# ") %>
         <%= array_str.first %> &nbsp;&nbsp; <span class="text-muted"># <%= array_str.last %></span><br>
       <% else %>
         <%= item %><br>
