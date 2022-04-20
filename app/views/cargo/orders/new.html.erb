@@ -1,7 +1,19 @@
-<h1>New order</h1>
+<div class="row my-2">
+  <div class="border col-2"  id="new-folder">
+    <h2>New order</h2>
+  </div>
+
+  <div class="border col-6">
+    <%= form_with do |form| %>
+      <%= form.label :query, "Name folder:" %>
+      <div id="name-folder" class="border" style="min-width: 80%;"><%= date_name_folder %></div>
+      <%= form.hidden_field :name_folder, id: "name-folder-hidden"%>
+      <%= form.submit "Search" %>
+    <% end %>
+  </div>
+</div>
 
 <%= render "form", cargo_order: @cargo_order %>
-
 <br>
 
 <div>

@@ -77,4 +77,8 @@ module Cargo::OrdersHelper
     end
     html
   end
+
+  def date_name_folder
+    Time.now.strftime("%y-%m-%d")
+  end
 end

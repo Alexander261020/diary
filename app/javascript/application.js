@@ -7,6 +7,7 @@
 
 import 'bootstrap/js/dist/dropdown'
 import 'bootstrap/js/dist/collapse'
+import './exist_folder'
 import './cargo'
 import './hide_window'
 // import './controllers/*'

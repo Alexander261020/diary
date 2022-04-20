@@ -1,3 +1,4 @@
+import './exist_folder'
 // for customers
 if (document.getElementById('customer_id') !== null) {
   search_customer = document.getElementById('customer_id');
@@ -170,6 +171,7 @@ function pick_town_from(id, value){
   town_from_id_h.value = id
   town_from_show = document.getElementById('town_from_show');
   town_from_show.style.display = "none";
+  setNameFolder()
 }
 
 
@@ -213,4 +215,5 @@ function pick_town_in(id, value){
   town_in_id_h.value = id
   town_in_show = document.getElementById('town_in_show');
   town_in_show.style.display = "none";
+  setNameFolder()
 }

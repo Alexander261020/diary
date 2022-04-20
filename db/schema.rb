@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_10_175857) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_20_174931) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -91,6 +91,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_10_175857) do
     t.integer "driver_id"
     t.integer "town_from_id"
     t.integer "town_in_id"
+    t.string "folder"
     t.index ["car_id"], name: "index_cargo_orders_on_car_id"
     t.index ["carrier_id"], name: "index_cargo_orders_on_carrier_id"
     t.index ["customer_id"], name: "index_cargo_orders_on_customer_id"

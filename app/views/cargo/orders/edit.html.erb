@@ -1,4 +1,16 @@
-<h1>Editing order</h1>
+<div class="row my-2">
+  <div class="border col-2">
+    <h2>Edit order</h2>
+  </div>
+
+  <div class="border col-5">
+    <%= form_with do |form| %>
+      <%= form.label :query, "Name folder:" %>
+      <%= form.text_field :query, value: date_name_folder %>
+      <%= form.submit "Search" %>
+    <% end %>
+  </div>
+</div>
 
 <%= render "form", cargo_order: @cargo_order %>
 <div>

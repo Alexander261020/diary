@@ -54,6 +54,9 @@ class Cargo::OrdersController < ApplicationController
     redirect_to cargo_orders_url
   end
 
+  def exist
+  end
+
   private
 
   def set_cargo_order
