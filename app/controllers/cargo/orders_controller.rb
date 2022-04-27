@@ -1,3 +1,5 @@
+require 'iconv'
+
 class Cargo::OrdersController < ApplicationController
   layout "cargo"
 
@@ -27,7 +29,7 @@ class Cargo::OrdersController < ApplicationController
 
   # POST /cargo/orders
   def create
-    @cargo_order = Cargo::Order.new
+    @cargo_order = Cargo::Order.new(cargo_order_params)
     AddReference.(@cargo_order, params)
 
     if @cargo_order.save
@@ -57,6 +59,20 @@ class Cargo::OrdersController < ApplicationController
   def exist
   end
 
+  def folder
+    path = "../../requests/requests/#{params[:name_folder]}"
+    Dir.mkdir("#{path}") unless File.directory?("#{path}")
+  end
+
+  def doc
+    # params.ssss
+    path = "../../requests/requests/22-04-27 FOLDER"
+    Dir.mkdir("#{path}") unless File.directory?("#{path}")
+    path = "../../requests/requests/22-04-27 FOLDER/Заявка.docx"
+    # File::ftype("#{path}").sssss
+    File.new("#{path}","a")
+  end
+
   private
 
   def set_cargo_order
@@ -64,6 +80,6 @@ class Cargo::OrdersController < ApplicationController
   end
 
   def cargo_order_params
-    params.require(:cargo_order).permit(:status)
+    params.require(:cargo_order).permit(:status, :folder)
   end
 end

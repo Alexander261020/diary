@@ -41,6 +41,7 @@ gem 'jsbundling-rails'
 gem 'cssbundling-rails'
 gem 'dotenv-rails'
 # gem 'esbuild-rails'
+gem 'iconv'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

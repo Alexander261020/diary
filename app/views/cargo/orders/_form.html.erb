@@ -12,7 +12,7 @@
   <% end %>
 
   <%= form.hidden_field :status %>
-  <div class="row" style="min-height: 200px;">
+  <div class="row border-bottom pb-2">
     <div class="position-relative col-2 p-0">
       <%= cargo_order_customer_exist(cargo_order) %>
       <div class="position-absolute bg-light p-1" id="customers_show" style="display: none;"></div>
@@ -44,8 +44,11 @@
     <div class="position-relative col-2 p-0">
       <%= cargo_order_payment_exist(cargo_order) %>
     </div>
-  </div>
-  <div>
-    <%= form.submit :submit, class: "btn btn-success" %>
+
+    <%= form.hidden_field :folder, id: "folder-hidden"%>
+
+    <div class="position-relative col-2 p-0">
+      <%= form.submit "Exist order", class: "btn btn-success m-2" %>
+    </div>
   </div>
 <% end %>

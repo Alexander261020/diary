@@ -1,0 +1,10 @@
+<div class="border col-6">
+  <%= form_with url: cargo_exist_folder_path do |form| %>
+    <%= form.label :query, "Name folder:" %>
+    <div id="name-folder" class="border d-inline-block" style="min-width: 60%;">
+      <%= @cargo_order.folder.nil? ? date_name_folder : @cargo_order.folder %>
+    </div>
+    <%= form.hidden_field :name_folder, value: "#{@cargo_order.folder}", id: "name-folder-hidden"%>
+    <%= form.submit "Exist folder", class: "btn btn-success d-inline-block"  %>
+  <% end %>
+</div>

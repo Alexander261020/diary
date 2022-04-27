@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     get "/carrier/:id/drivers/new", to: "drivers#new", as: "new_driver"
     resources :contacts, only: [:destroy, :edit, :update]
     get "/orders/arhive", to: "orders#arhive", as: "arhive"
+    post "/orders/exits_folder", to: "orders#folder", as: "exist_folder"
+    post "/orders/exits_doc", to: "orders#doc", as: "exist_doc"
     resources :orders
     get "/towns/parsing", to: "towns#parsing", as: "parsing_towns"
     resources :towns

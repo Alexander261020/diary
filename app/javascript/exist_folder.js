@@ -13,6 +13,7 @@ if (document.getElementById('new-folder') !== null) {
 function setNameFolder(){
   nameFolder = document.getElementById('name-folder');
   nameFolderHidden = document.getElementById('name-folder-hidden');
+  folderHiddenInForm = document.getElementById('folder-hidden');
   townFromId = document.getElementById('town_from_id');
   townInId = document.getElementById('town_in_id');
   let date = nameFolder.innerHTML.split(" ")[0]
@@ -27,5 +28,6 @@ function setNameFolder(){
     console.log(name)
   }
   nameFolder.innerHTML = name
-  nameFolderHidden.innerHTML = name
+  nameFolderHidden.value = name
+  folderHiddenInForm.value = name
 }
