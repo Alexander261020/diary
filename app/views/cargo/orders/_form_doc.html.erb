@@ -26,9 +26,9 @@ _______________________________________________________________________________
 Дата и время выгрузки: ХХ.ХХ.2022 по согласованию.
 Адрес выгрузки: г. Московская область, Ленинский г.о, д. Белеутово 462 ,  тел.:  +7 985 107-82-00 Майя
 _______________________________________________________________________________
-Автомобиль: марка - #{@cargo_order.car.brand}, рег.знак - #{@cargo_order.car.reg_mark}, кузов - тент.
+Автомобиль: марка - #{@cargo_order.car.brand unless @cargo_order.car.nil?}, рег.знак - #{@cargo_order.car.reg_mark unless @cargo_order.car.nil?}, кузов - тент.
 _______________________________________________________________________________
-Водитель: #{@cargo_order.driver.name} паспорт: #{@cargo_order.driver.passport}
+Водитель: #{@cargo_order.driver.name unless @cargo_order.driver.nil?} паспорт: #{@cargo_order.driver.passport  unless @cargo_order.driver.passport.nil?}
 тел.: #{@cargo_order.driver.contacts.first.tel}
 _______________________________________________________________________________
                           СВЕДЕНИЯ ОБ ОПЛАТЕ
