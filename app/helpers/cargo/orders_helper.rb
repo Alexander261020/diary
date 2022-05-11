@@ -1,4 +1,6 @@
 module Cargo::OrdersHelper
+  MONTHS = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря']
+
   def cargo_order_customer_exist(order)
     if order.customer.present?
       text_field_tag 'customer_id', nil, placeholder: "customer", value:  order.customer.name, class: "w-100"
@@ -80,5 +82,15 @@ module Cargo::OrdersHelper
 
   def date_name_folder
     Time.now.strftime("%y-%m-%d")
+  end
+
+  def name_order_to_doc
+    Time.now.strftime("%y%m%d")
+  end
+
+  def date_order
+    now = Time.now
+    m = now.strftime("%m").to_i
+    now.strftime("«%d» #{MONTHS[m-1]} %Yг.")
   end
 end

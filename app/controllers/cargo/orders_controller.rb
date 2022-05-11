@@ -65,12 +65,26 @@ class Cargo::OrdersController < ApplicationController
   end
 
   def doc
-    # params.ssss
-    path = "../../requests/requests/22-04-27 FOLDER"
+    text = params['text_order']
+    name_folder = params['name_folder']
+    path = "../../requests/requests/#{name_folder}"
     Dir.mkdir("#{path}") unless File.directory?("#{path}")
-    path = "../../requests/requests/22-04-27 FOLDER/Заявка.docx"
-    # File::ftype("#{path}").sssss
-    File.new("#{path}","a")
+    # path = "../../requests/requests/#{path}/Заявка.docx"
+
+    # file = File.new("#{path}","w")
+    # file.write(text)
+    path_img = "../../requests/requests/#{name_folder}/my_order.pnd"
+    # img = File.open("#{path_img}","a")
+    # file.import(img)
+    # file.write(img)
+    # File.write 'image.png', open('http://example.com/image.png').read
+    # file.close unless file.nil?
+
+    file = File.open("#{path_img}","a")
+    file.write(text)
+    file.print("Строка для записи в файл\n\r")
+    file.puts "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
+    file.close unless file.nil?
   end
 
   private
