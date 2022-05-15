@@ -73,9 +73,21 @@ class Cargo::OrdersController < ApplicationController
         adress_load = Cargo::AdressLoad.new(adress: params['order_adress_load'])
       end
 
-      @cargo_order.adress_load = adress_load
       adress_load.customer = @cargo_order.customer
+      @cargo_order.adress_load = adress_load
       adress_load.save
+    end
+
+    if params['order_adress_reload'].present?
+      if Cargo::AdressReload.find_by(adress: params['order_adress_reload']).present?
+        adress_reload = Cargo::AdressReload.find_by(adress: params['order_adress_reload'])
+      else
+        adress_reload = Cargo::AdressReload.new(adress: params['order_adress_reload'])
+      end
+
+      adress_reload.customer = @cargo_order.customer
+      @cargo_order.adress_reload = adress_reload
+      adress_reload.save
     end
 
     text = params['text_order']

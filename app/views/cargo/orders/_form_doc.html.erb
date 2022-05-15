@@ -24,9 +24,29 @@
     Маршрут: <%= form.text_field :order_route, style: "width: 600px;", value: "#{@cargo_order.town_from.title}(#{@cargo_order.town_from.region}) - #{@cargo_order.town_in.title}(#{@cargo_order.town_in.region})" %>
   </div>
   <div>
+     Дата загрузки: <%= form.text_field :order_date_load, style: "width: 900px;", value: "#{
+        if @cargo_order.date_load.present?
+          @cargo_order.date_load
+        else
+          "#{Time.now.strftime("%d.%m.%Y")} по согласованию."
+        end
+        }" %>
+  </div>
+  <div>
     Адрес загрузки: <%= form.text_field :order_adress_load, style: "width: 900px;", value: "#{@cargo_order.adress_load.adress if @cargo_order.adress_load.present? }" %>
   </div>
-
+  <div>
+     Дата выгрузки: <%= form.text_field :order_date_reload, style: "width: 900px;", value: "#{
+        if @cargo_order.date_reload.present?
+          @cargo_order.date_reload
+        else
+          "#{Time.now.strftime("%d.%m.%Y")} по согласованию."
+        end
+        }" %>
+  </div>
+  <div>
+    Адрес выгрузки: <%= form.text_field :order_adress_reload, style: "width: 900px;", value: "#{@cargo_order.adress_reload.adress if @cargo_order.adress_reload.present? }" %>
+  </div>
   <div>
 Сведения о грузе: CARGO!!!!!! вес, объем. Способ загрузки/выгрузки: верх/бок/зад
 

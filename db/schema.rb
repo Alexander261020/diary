@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_15_075630) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_15_083216) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,6 +34,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_075630) do
     t.integer "order_id"
     t.integer "customer_id"
     t.index ["customer_id"], name: "index_cargo_adress_loads_on_customer_id"
+  end
+
+  create_table "cargo_adress_reloads", force: :cascade do |t|
+    t.string "adress"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "order_id"
+    t.integer "customer_id"
+    t.index ["customer_id"], name: "index_cargo_adress_reloads_on_customer_id"
   end
 
   create_table "cargo_carriers", force: :cascade do |t|
@@ -102,7 +111,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_075630) do
     t.integer "town_in_id"
     t.string "folder"
     t.integer "adress_load_id"
+    t.integer "adress_reload_id"
+    t.string "date_load"
+    t.string "date_reload"
     t.index ["adress_load_id"], name: "index_cargo_orders_on_adress_load_id"
+    t.index ["adress_reload_id"], name: "index_cargo_orders_on_adress_reload_id"
     t.index ["car_id"], name: "index_cargo_orders_on_car_id"
     t.index ["carrier_id"], name: "index_cargo_orders_on_carrier_id"
     t.index ["customer_id"], name: "index_cargo_orders_on_customer_id"

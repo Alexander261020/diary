@@ -7,6 +7,7 @@ class Cargo::Order < ApplicationRecord
   belongs_to :driver, optional: true
   has_one :payment
   has_one :adress_load
+  has_one :adress_reload
 
   belongs_to :town_from, class_name: "Town", foreign_key: "town_from_id", optional: true
   belongs_to :town_in, class_name: "Town", foreign_key: "town_in_id", optional: true
