@@ -26,6 +26,8 @@
 /config/master.key
 
 /app/assets/builds/*
+/app/assets/images/*
 !/app/assets/builds/.keep
+!/app/assets/images/.keep
 
 /node_modules

@@ -140,31 +140,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_083216) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "carriers", force: :cascade do |t|
-    t.string "name"
-    t.string "inn"
-    t.string "ogrn"
-    t.string "passport"
-    t.string "adress"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "chapters", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "count_clicks", default: 0
-  end
-
-  create_table "customers", force: :cascade do |t|
-    t.string "name"
-    t.string "inn"
-    t.string "ogrn"
-    t.string "passport"
-    t.string "adress"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "errors", force: :cascade do |t|
