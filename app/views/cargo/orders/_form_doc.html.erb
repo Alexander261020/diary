@@ -1,49 +1,55 @@
 <%= form_with url: cargo_exist_doc_path do |form| %>
   <%= form.hidden_field :name_folder, value: "#{@cargo_order.folder}", id: "name-folder-hidden-to-file"%>
-  <!--
-  #{@cargo_order.customer.name}, именуемый в дальнейшем «ЗАКАЗЧИК» с одной стороны, и #{@cargo_order.carrier.name} именуемый в дальнейшем «ПЕРЕВОЗЧИК» с другой стороны, заключили настоящий договор о выполнении транспортных услуг  на следующих действующих условиях:
-  #{@cargo_order.customer.name}, именуемый в дальнейшем «ЗАКАЗЧИК» с одной стороны, и #{@cargo_order.carrier.name} именуемый в дальнейшем «ПЕРЕВОЗЧИК» с другой стороны, заключили настоящий договор о выполнении транспортных услуг  на следующих действующих условиях:
-  -->
 
-  <%= text_area_tag :text_order,
-"Заявка-договор №#{name_order_to_doc} от #{date_order} на предоставление транспортных услуг
-_______________________________________________________________________________
-ЗАКАЗЧИК: #{@cargo_order.customer.name}
-ИНН: #{@cargo_order.customer.inn}
-ОГРН: #{@cargo_order.customer.ogrn}
-_______________________________________________________________________________
-ПЕРЕВОЗЧИК: #{@cargo_order.carrier.name}
-ИНН: #{@cargo_order.carrier.inn}
-ОГРН: #{@cargo_order.carrier.ogrn}
-_______________________________________________________________________________
-Маршрут: #{@cargo_order.town_from.title}(#{@cargo_order.town_from.region}) - #{@cargo_order.town_in.title}(#{@cargo_order.town_in.region})
-_______________________________________________________________________________
+  <br />
+    <br />
+      <br />
+  <div>
+    <%= form.hidden_field :id, value: @cargo_order.id %>
+    Заявка-договор №<%= form.text_field :order_number, value: "#{name_order_to_doc}", style: "width: 80px;" %>
+    от <%= form.text_field :order_date, value: "#{date_order}" %>
+  </div>
+  <div>
+    ЗАКАЗЧИК: <%= form.text_field :cus_name, value: "#{@cargo_order.customer.name}" %>
+    ИНН: <%= form.text_field :cus_inn, value: "#{@cargo_order.customer.inn}" %>
+    ОГРН: <%= form.text_field :cus_ogrn, value: "#{@cargo_order.customer.ogrn}" %>
+  </div>
+
+  <div>
+    ПЕРЕВОЗЧИК: <%= form.text_field :car_name, value: "#{@cargo_order.carrier.name}" %>
+    ИНН: <%= form.text_field :car_inn, value: "#{@cargo_order.carrier.inn}" %>
+    ОГРН: <%= form.text_field :car_ogrn, value: "#{@cargo_order.carrier.ogrn}" %>
+  </div>
+  <div>
+    Маршрут: <%= form.text_field :order_route, style: "width: 600px;", value: "#{@cargo_order.town_from.title}(#{@cargo_order.town_from.region}) - #{@cargo_order.town_in.title}(#{@cargo_order.town_in.region})" %>
+  </div>
+  <div>
+    Адрес загрузки: <%= form.text_field :order_adress_load, style: "width: 900px;", value: "#{@cargo_order.adress_load.adress if @cargo_order.adress_load.present? }" %>
+  </div>
+
+  <div>
 Сведения о грузе: CARGO!!!!!! вес, объем. Способ загрузки/выгрузки: верх/бок/зад
-_______________________________________________________________________________
+
 Дата и время загрузки: ХХ.ХХ.2022 по согласованию.
 Адрес загрузки: г. Московская область, Ленинский г.о, д. Белеутово 462 ,  тел.:  +7 985 107-82-00 Майя
-_______________________________________________________________________________
+
 Дата и время выгрузки: ХХ.ХХ.2022 по согласованию.
 Адрес выгрузки: г. Московская область, Ленинский г.о, д. Белеутово 462 ,  тел.:  +7 985 107-82-00 Майя
-_______________________________________________________________________________
+
 Автомобиль: марка - #{@cargo_order.car.brand unless @cargo_order.car.nil?}, рег.знак - #{@cargo_order.car.reg_mark unless @cargo_order.car.nil?}, кузов - тент.
-_______________________________________________________________________________
+
 Водитель: #{@cargo_order.driver.name unless @cargo_order.driver.nil?} паспорт: #{@cargo_order.driver.passport  unless @cargo_order.driver.passport.nil?}
 тел.: #{@cargo_order.driver.contacts.first.tel}
-_______________________________________________________________________________
+
                           СВЕДЕНИЯ ОБ ОПЛАТЕ
 Стоимость услуги: #{@cargo_order.payment.sum}( тысяч рублей)
 Форма и условия оплаты: Наличным расчетом водителю перед выгрузкой! После оплаты перевозки перевозчик обязан перевести #{@cargo_order.payment.sin}рублей на карту №5536 9138 3095 6906 держатель Александр Михайлович К.
-_______________________________________________________________________________
+</div>
 
-", class: "w-75 mt-5", rows: 25 %>
-
-  <div>
-    Маршрут
-    Малые Вяземы – Новокузнецк
-    СВЕДЕНИЯ О ГРУЗЕ:
-  </div>
+"
+  <!--%= image_tag("signature")%-->
   <div class="position-relative col-2 p-0">
-    <%= form.submit "Exits file", class: "btn btn-success m-2" %>
+    <%= form.submit "Exits file", class: "btn btn-success m-2 d-inline-block" %>
+    <%= link_to "Перейти к файлу", '/', class: 'btn btn-success m-2 d-inline-block' %>
   </div>
 <% end %>

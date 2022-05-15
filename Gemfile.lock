@@ -77,6 +77,9 @@ GEM
       reline (>= 0.2.7)
     diff-lcs (1.5.0)
     digest (3.1.0)
+    docx (0.7.0)
+      nokogiri (~> 1.13, >= 1.13.0)
+      rubyzip (~> 2.0)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
@@ -89,6 +92,10 @@ GEM
       railties (>= 5.0.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    htmltoword (1.1.1)
+      actionpack
+      nokogiri
+      rubyzip (>= 1.0)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
     iconv (1.0.8)
@@ -186,6 +193,7 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.11.0)
+    rubyzip (2.3.2)
     shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
     sprockets (4.0.2)
@@ -216,8 +224,10 @@ PLATFORMS
 DEPENDENCIES
   cssbundling-rails
   debug
+  docx
   dotenv-rails
   factory_bot_rails
+  htmltoword
   iconv
   jquery-rails
   jsbundling-rails

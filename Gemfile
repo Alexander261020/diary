@@ -42,6 +42,8 @@ gem 'cssbundling-rails'
 gem 'dotenv-rails'
 # gem 'esbuild-rails'
 gem 'iconv'
+gem 'docx'
+gem 'htmltoword'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

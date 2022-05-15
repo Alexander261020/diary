@@ -3,4 +3,5 @@ class Cargo::Customer < ApplicationRecord
 
   has_many :contacts, dependent: :destroy
   has_many :orders
+  has_many :adress_loads
 end

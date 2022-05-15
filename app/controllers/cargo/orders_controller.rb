@@ -1,9 +1,10 @@
 require 'iconv'
+require 'htmltoword'
 
 class Cargo::OrdersController < ApplicationController
   layout "cargo"
 
-  before_action :set_cargo_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_cargo_order, only: [:show, :edit, :update, :destroy, :doc]
 
   def index
     @cargo_orders = Cargo::Order.where('status < 3').order(id: :desc)
@@ -65,26 +66,26 @@ class Cargo::OrdersController < ApplicationController
   end
 
   def doc
+    if params['order_adress_load'].present?
+      if Cargo::AdressLoad.find_by(adress: params['order_adress_load']).present?
+        adress_load = Cargo::AdressLoad.find_by(adress: params['order_adress_load'])
+      else
+        adress_load = Cargo::AdressLoad.new(adress: params['order_adress_load'])
+      end
+
+      @cargo_order.adress_load = adress_load
+      adress_load.customer = @cargo_order.customer
+      adress_load.save
+    end
+
     text = params['text_order']
     name_folder = params['name_folder']
     path = "../../requests/requests/#{name_folder}"
     Dir.mkdir("#{path}") unless File.directory?("#{path}")
-    # path = "../../requests/requests/#{path}/Заявка.docx"
 
-    # file = File.new("#{path}","w")
-    # file.write(text)
-    path_img = "../../requests/requests/#{name_folder}/my_order.pnd"
-    # img = File.open("#{path_img}","a")
-    # file.import(img)
-    # file.write(img)
-    # File.write 'image.png', open('http://example.com/image.png').read
-    # file.close unless file.nil?
-
-    file = File.open("#{path_img}","a")
-    file.write(text)
-    file.print("Строка для записи в файл\n\r")
-    file.puts "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
-    file.close unless file.nil?
+    path_file = "../../requests/requests/#{name_folder}/my_order.html"
+    path_img = "../../requests/requests/#{name_folder}/signature.png"
+    path_docx = "../../requests/requests/#{name_folder}/my_order.docx"
   end
 
   private
