@@ -8,6 +8,7 @@ class Cargo::Order < ApplicationRecord
   has_one :payment
   has_one :adress_load
   has_one :adress_reload
+  has_one :gruz
 
   belongs_to :town_from, class_name: "Town", foreign_key: "town_from_id", optional: true
   belongs_to :town_in, class_name: "Town", foreign_key: "town_in_id", optional: true

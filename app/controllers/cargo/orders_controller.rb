@@ -4,7 +4,7 @@ require 'htmltoword'
 class Cargo::OrdersController < ApplicationController
   layout "cargo"
 
-  before_action :set_cargo_order, only: [:show, :edit, :update, :destroy, :doc]
+  before_action :set_cargo_order, except: [:index, :arhive, :new, :create]
 
   def index
     @cargo_orders = Cargo::Order.where('status < 3').order(id: :desc)
@@ -90,6 +90,24 @@ class Cargo::OrdersController < ApplicationController
       adress_reload.save
     end
 
+    @cargo_order.date_load = params['order_date_load'] if params['order_date_load'].present?
+    @cargo_order.date_reload = params['order_date_reload'] if params['order_date_reload'].present?
+
+    if params['gruz_weight'].present? || params['gruz_what_is'].present? || params['gruz_volume'].present?
+      if  Cargo::Gruz.find_by(weight: params['gruz_weight'], volume: params['gruz_volume'], what_is: params['gruz_what_is']).present?
+        gruz = Cargo::Gruz.find_by(weight: params['gruz_weight'], volume: params['gruz_volume'], what_is: params['gruz_what_is'])
+      else
+        gruz = Cargo::Gruz.new(weight: params['gruz_weight'], volume: params['gruz_volume'], what_is: params['gruz_what_is'])
+        gruz.save
+      end
+    end
+
+    @cargo_order.gruz = gruz
+    @cargo_order.save
+    unless @cargo_order.customer.gruzs.include?(gruz)
+      @cargo_order.customer.gruzs.push(gruz)
+    end
+
     text = params['text_order']
     name_folder = params['name_folder']
     path = "../../requests/requests/#{name_folder}"
@@ -98,6 +116,15 @@ class Cargo::OrdersController < ApplicationController
     path_file = "../../requests/requests/#{name_folder}/my_order.html"
     path_img = "../../requests/requests/#{name_folder}/signature.png"
     path_docx = "../../requests/requests/#{name_folder}/my_order.docx"
+  end
+
+  def file_exist
+    @customer = @cargo_order.customer
+  end
+
+  def file_exist_i
+    @customer = Cargo::Customer.find 1
+    render "file_exist"
   end
 
   private

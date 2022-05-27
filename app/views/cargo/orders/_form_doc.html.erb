@@ -16,9 +16,9 @@
   </div>
 
   <div>
-    ПЕРЕВОЗЧИК: <%= form.text_field :car_name, value: "#{@cargo_order.carrier.name}" %>
-    ИНН: <%= form.text_field :car_inn, value: "#{@cargo_order.carrier.inn}" %>
-    ОГРН: <%= form.text_field :car_ogrn, value: "#{@cargo_order.carrier.ogrn}" %>
+    ПЕРЕВОЗЧИК: <%= form.text_field :car_name, value: "#{@cargo_order.carrier.name if @cargo_order.carrier.present? }" %>
+    ИНН: <%= form.text_field :car_inn, value: "#{@cargo_order.carrier.inn if @cargo_order.carrier.present? }" %>
+    ОГРН: <%= form.text_field :car_ogrn, value: "#{@cargo_order.carrier.ogrn if @cargo_order.carrier.present? }" %>
   </div>
   <div>
     Маршрут: <%= form.text_field :order_route, style: "width: 600px;", value: "#{@cargo_order.town_from.title}(#{@cargo_order.town_from.region}) - #{@cargo_order.town_in.title}(#{@cargo_order.town_in.region})" %>
@@ -48,28 +48,20 @@
     Адрес выгрузки: <%= form.text_field :order_adress_reload, style: "width: 900px;", value: "#{@cargo_order.adress_reload.adress if @cargo_order.adress_reload.present? }" %>
   </div>
   <div>
-Сведения о грузе: CARGO!!!!!! вес, объем. Способ загрузки/выгрузки: верх/бок/зад
+    Характеристики груза:<br/>
+    Чот везем: <%= form.text_field :gruz_what_is, style: "width: 500px;", value: "#{ @cargo_order.gruz.what_is if @cargo_order.gruz.present? && @cargo_order.gruz.what_is.present? }" %>
+  </div>
+  <div>
+    Вес: <%= form.text_field :gruz_weight, style: "width: 100px;", value: "#{ @cargo_order.gruz.weight if @cargo_order.gruz.present? && @cargo_order.gruz.weight.present? }" %>
+  </div>
+  <div>
+    Объем: <%= form.text_field :gruz_volume, style: "width: 100px;", value: "#{ @cargo_order.gruz.volume if @cargo_order.gruz.present? && @cargo_order.gruz.volume.present? }"  %>
+  </div>
 
-Дата и время загрузки: ХХ.ХХ.2022 по согласованию.
-Адрес загрузки: г. Московская область, Ленинский г.о, д. Белеутово 462 ,  тел.:  +7 985 107-82-00 Майя
-
-Дата и время выгрузки: ХХ.ХХ.2022 по согласованию.
-Адрес выгрузки: г. Московская область, Ленинский г.о, д. Белеутово 462 ,  тел.:  +7 985 107-82-00 Майя
-
-Автомобиль: марка - #{@cargo_order.car.brand unless @cargo_order.car.nil?}, рег.знак - #{@cargo_order.car.reg_mark unless @cargo_order.car.nil?}, кузов - тент.
-
-Водитель: #{@cargo_order.driver.name unless @cargo_order.driver.nil?} паспорт: #{@cargo_order.driver.passport  unless @cargo_order.driver.passport.nil?}
-тел.: #{@cargo_order.driver.contacts.first.tel}
-
-                          СВЕДЕНИЯ ОБ ОПЛАТЕ
-Стоимость услуги: #{@cargo_order.payment.sum}( тысяч рублей)
-Форма и условия оплаты: Наличным расчетом водителю перед выгрузкой! После оплаты перевозки перевозчик обязан перевести #{@cargo_order.payment.sin}рублей на карту №5536 9138 3095 6906 держатель Александр Михайлович К.
-</div>
-
-"
   <!--%= image_tag("signature")%-->
   <div class="position-relative col-2 p-0">
     <%= form.submit "Exits file", class: "btn btn-success m-2 d-inline-block" %>
-    <%= link_to "Перейти к файлу", '/', class: 'btn btn-success m-2 d-inline-block' %>
+    <%= link_to "Перейти к ИП", cargo_file_exist_path(@cargo_order), class: 'btn btn-success m-2 d-inline-block' %>
+    <%= link_to "Перейти к Я", cargo_file_exist_i_path(@cargo_order), class: 'btn btn-success m-2 d-inline-block' %>
   </div>
 <% end %>

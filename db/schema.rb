@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_15_083216) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_15_162913) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,6 +79,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_083216) do
     t.index ["driver_id"], name: "index_cargo_contacts_on_driver_id"
   end
 
+  create_table "cargo_customer_gruzs", force: :cascade do |t|
+    t.bigint "customer_id"
+    t.bigint "gruz_id"
+    t.index ["customer_id"], name: "index_cargo_customer_gruzs_on_customer_id"
+    t.index ["gruz_id"], name: "index_cargo_customer_gruzs_on_gruz_id"
+  end
+
+  create_table "cargo_customer_is_cargos", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cargo_customers", force: :cascade do |t|
     t.string "name"
     t.string "inn"
@@ -99,6 +111,29 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_083216) do
     t.index ["carrier_id"], name: "index_cargo_drivers_on_carrier_id"
   end
 
+  create_table "cargo_gruzs", force: :cascade do |t|
+    t.string "weight"
+    t.string "volume"
+    t.string "what_is"
+    t.string "g_len"
+    t.string "g_wid"
+    t.string "g_hei"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "order_id"
+  end
+
+  create_table "cargo_is_cargos", force: :cascade do |t|
+    t.string "weight"
+    t.string "volume"
+    t.string "what_is"
+    t.string "g_len"
+    t.string "g_wid"
+    t.string "g_hei"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cargo_orders", force: :cascade do |t|
     t.integer "status", default: 1
     t.datetime "created_at", null: false
@@ -114,12 +149,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_083216) do
     t.integer "adress_reload_id"
     t.string "date_load"
     t.string "date_reload"
+    t.integer "gruz_id"
     t.index ["adress_load_id"], name: "index_cargo_orders_on_adress_load_id"
     t.index ["adress_reload_id"], name: "index_cargo_orders_on_adress_reload_id"
     t.index ["car_id"], name: "index_cargo_orders_on_car_id"
     t.index ["carrier_id"], name: "index_cargo_orders_on_carrier_id"
     t.index ["customer_id"], name: "index_cargo_orders_on_customer_id"
     t.index ["driver_id"], name: "index_cargo_orders_on_driver_id"
+    t.index ["gruz_id"], name: "index_cargo_orders_on_gruz_id"
     t.index ["town_from_id"], name: "index_cargo_orders_on_town_from_id"
     t.index ["town_in_id"], name: "index_cargo_orders_on_town_in_id"
   end

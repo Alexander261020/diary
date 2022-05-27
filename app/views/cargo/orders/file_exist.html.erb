@@ -1,0 +1,208 @@
+<style>
+p{
+  text-indent: 20px;
+  margin-bottom: 0px;
+}
+.pl-2{
+  padding-left: 10px;
+}
+.img_s{
+  width: 600px;
+}
+</style>
+<div class="col-6 m-auto" style="font-size: 10px;">
+  <div class="row">
+    <div class="m-auto text-center">Заявка-договор №<%=name_order_to_doc %> от <%=date_order %> на предоставление транспортных услуг</div>
+    <p><%= @customer.name%>, именуемый в дальнейшем «ЗАКАЗЧИК» с одной стороны, и <%= @cargo_order.carrier.name %>
+    именуемый в дальнейшем «ПЕРЕВОЗЧИК» с другой стороны, заключили настоящий договор о выполнении транспортных
+    услуг на следующих действующих условиях:</p>
+  </div>
+  <div class="row">
+    <div class="border border-dark col-6 d-inline-block pl-2">
+      ЗАКАЗЧИК: <%= @customer.name%> <br>
+      <% if @customer.inn.present? %>
+        <%= "ИНН: #{@customer.inn}" %> <br>
+      <% end %>
+      <% if @customer.ogrn.present? %>
+        <%= "ОГРН: #{@customer.ogrn}" %> <br>
+      <% end %>
+      <%= "ПАСПОРТ: #{@customer.passport}" if @customer.passport.present? %>
+    </div>
+    <div class="border border-dark col-6 d-inline-block">
+      ПЕРЕВОЗЧИК: <%= @cargo_order.carrier.name%> <br>
+      <% if @cargo_order.carrier.inn.present? %>
+        <%= "ИНН: #{@cargo_order.carrier.inn}" %> <br>
+      <% end %>
+      <% if @cargo_order.carrier.ogrn.present? %>
+        <%= "ОГРН: #{@cargo_order.carrier.ogrn}" %> <br>
+      <% end %>
+      <%= "ПАСПОРТ: #{@cargo_order.carrier.passport}" if @cargo_order.carrier.passport.present? %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-4 border border-dark">
+      Маршрут:
+    </div>
+    <div class="col-8 border border-dark">
+      <%= "#{ @cargo_order.town_from.title}(#{@cargo_order.town_from.region}) - #{@cargo_order.town_in.title}(#{@cargo_order.town_in.region})" %>
+    </div>
+  </div>
+  <div class="row">СВЕДЕНИЯ О ГРУЗЕ:</div>
+  <div class="row">
+    <div class="col-4 border border-dark">
+      Наименование груза, вес, объем:
+    </div>
+    <div class="col-8 border border-dark">
+      <%= "#{ @cargo_order.gruz.what_is}, #{@cargo_order.gruz.weight}, #{@cargo_order.gruz.volume}" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 border border-dark">
+      Способ загрузки:
+    </div>
+    <div class="col-8 border border-dark">
+      Погрузка: задняя. Выгрузка: задняя.
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 border border-dark">
+      Дата и время загрузки а/м:
+    </div>
+    <div class="col-8 border border-dark">
+      <%= @cargo_order.date_load %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 border border-dark">
+      Грузоотправитель, контактное лицо, адрес:
+    </div>
+    <div class="col-8 border border-dark">
+      <%= @cargo_order.adress_load.adress %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 border border-dark">
+      Дата и время выгрузки а/м:
+    </div>
+    <div class="col-8 border border-dark">
+      <%= @cargo_order.date_reload %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 border border-dark">
+      Грузополучатель, контактное лицо, адрес:
+    </div>
+    <div class="col-8 border border-dark">
+      <%= @cargo_order.adress_reload.adress %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 border border-dark">
+      Доп. требования:
+    </div>
+    <div class="col-8 border border-dark">
+      Сдавать/принимать груз строго согласно транспортной накладной!
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 border border-dark">
+      Марка, номер, кузов а/м:
+    </div>
+    <div class="col-8 border border-dark">
+      <%= @cargo_order.car.brand if @cargo_order.car.brand.present? %>
+      <%= @cargo_order.car.reg_mark if @cargo_order.car.reg_mark.present? %>
+      <%= @cargo_order.car.p_mark if @cargo_order.car.p_mark.present? %>
+      кузов тент.
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 border border-dark">
+      Данные водителя:
+    </div>
+    <div class="col-8 border border-dark">
+      <%= @cargo_order.driver.name if @cargo_order.driver.name.present? %>
+      <%= @cargo_order.driver.passport if @cargo_order.driver.passport.present? %>
+      <% if @cargo_order.driver.contacts.first.present? %>
+        Тел.: <%= @cargo_order.driver.contacts.first.tel %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">СВЕДЕНИЯ ОБ ОПЛАТЕ:</div>
+
+  <div class="row">
+    <div class="col-3 border border-dark">
+      Стоимость услуги:
+    </div>
+    <div class="col-9 border border-dark">
+      <%= @cargo_order.payment.sum %> рублей
+      <% if @customer.id == 1 %>
+
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3 border border-dark">
+      Форма, условия и сроки оплаты:
+    </div>
+    <div class="col-9 border border-dark">
+      Наличным расчетом водителю перед выгрузкой.
+      <% if @customer.id == 1 %>
+        После оплаты перевозки перевозчик обязан перевести <%= @cargo_order.payment.sin %> рублей на карту №5536 9138 3095 6906 держатель Александр Михайлович К.
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+      1. Данная факсимильная заявка при отсутствии долгосрочного договора между «Заказчиком» и «Перевозчиком» имеет силу
+      договора на разовую перевозку.<br>
+      2. Факсимильная копия данной заявки имеет полную юридическую силу.
+      3. Заказчик обязан:
+      3.1. Произвести загрузку в срок согласованный обеими сторонами. Сумма штрафа за простой по вине «Заказчика» составляет
+      ОДНА тысяча рублей,за каждые сутки простоя.
+      3.2. В случае отмены заявки Заказчиком, после подтверждения, в день отгрузки, налагается штраф в размере 500 (пятисот)рублей.
+      3.3. Произвести оплату за оказанные услуги, выполненные перевозчиком, в сроки согласованные в настоящем договоре – заявке.
+      В случае задержки оплаты «Заказчик» выплачивает штраф пени 0,2%от выставленной суммы за каждый день просрочки
+      платежа при предъявлении претензии Перевозчика.
+      3.4Произвести загрузку только после тщательной сверки данных водителя, указанных в данном Договоре-заявке, с оригиналом
+      паспорта водителя, и оригиналами документов на машину. НЕ ПРОИЗВОДИТЬ загрузку в случае отсутствия этих документов у
+      водителя!4.Перевозч
+      ик обязан:
+      4.1. Поставить под загрузку исправное транспортное средство, пригодное для перевозки данного груза. Сумма штрафа за опоздание
+      автотранспорта по вине «Перевозчика» составляет ОДНА тысяча рублей, за каждые сутки опоздания, но не более 50% от фрахта. В
+      заявке
+      указаны «рекомендуемые» сроки доставки, перевозчик прежде всего руководствуется нормативами пробега
+      транспорта указанными в
+      Уставе
+      Автомобильного Транспорта.
+      4.2. Доставить груз в пункт назначения в срок, определенный транспортными уставами и кодексами или в разумные сроки.
+      4.3 Оплатить услуги диспетчера согласно Агентского соглашения.
+      4.4. Перевозчик несет ответственность за недостачу, утрачу, повреждение в процессе перевозки принятых грузов в полном
+      объеме их стоимости; а также возмещает «Заказчику» принесенные убытки в размере стоимости утраченного/поврежденного в
+      результате перевозки товара, устанавливаемой заказчиком на основании текущих цен на момент утраты или повреждения.
+      Также перевозчик несет материальную ответственность за несвоевременную доставку груза, в размере ущерба заказчика.
+      4.5. При возникновении любых вопросов необходимо проинформировать руководителя фирмы-заказчика.
+      5. Общие условия:
+      5.1. В случае невыполнения условий данного Договора-заявки со стороны«Перевозчика»,«Заказчик»вправе отказаться от
+      транспортного средства перевозчика.
+      5.2. В случае невыполнения условий данного Договора-заявки со стороны «Заказчика», «Перевозчик»вправе отказаться от загрузки.
+      5.3. Все графы Договора-заявки должны быть заполнены. При невыполнении данного условия или при отсутствии подписи
+      заказчика,Договор-заявка к работе не принимается.
+      5.4. «Перевозчик»вправе отказаться от разгрузки в случае нарушения со стороны Заказчика сроков оплаты по данному договору
+      до полного погашения задолженности« З а к а з ч и к о м » .
+      5.5. Данный договор является двухсторонним, и третьи лица (контрагенты «Заказчика» или «Перевозчика», с которыми у тех
+      имеются какие-либо устные или письменные договорённости) не несут никаких обязательств по данному договору.
+      5.6. Все обязанности по оплате услуг по данному Договору-заявке несёт«Заказчик».
+      5.7. В остальном стороны руководствуются законом«О транспортно-экспедиторской деятельности» РФ и
+      ПК РФ предупрежден (а)об ответственности за правильность сведений указанных в заявке.
+    <!--%= image_tag("signature") %-->
+  </div>
+</div>

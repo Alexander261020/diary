@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     resources :drivers, except: [:new, :index]
     get "/carrier/:id/drivers/new", to: "drivers#new", as: "new_driver"
     resources :contacts, only: [:destroy, :edit, :update]
+    get "/orders/:id/file_exist", to: "orders#file_exist", as: "file_exist"
+    get "/orders/:id/file_exist_i", to: "orders#file_exist_i", as: "file_exist_i"
     get "/orders/arhive", to: "orders#arhive", as: "arhive"
     post "/orders/exits_folder", to: "orders#folder", as: "exist_folder"
     post "/orders/exits_doc", to: "orders#doc", as: "exist_doc"
